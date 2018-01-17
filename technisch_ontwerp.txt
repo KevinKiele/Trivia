@@ -84,10 +84,10 @@ Optioneel:
 Highscore
 
 Views:
-- Pre Login Homepage
-- Post Login Homepage
-- Login Screen
-- Register screen
-- Lobby Selection Screen
-- Lobby Screen
-- In-game screen
+- Pre Login Homepage - https://imgur.com/a/5TTmF
+- Post Login Homepage - https://imgur.com/a/TTUBz
+- Login Screen - https://imgur.com/a/clPo3
+- Register screen - https://imgur.com/a/Apmqi
+- Lobby Selection Screen - https://imgur.com/a/KKgN0
+- Lobby Screen - https://imgur.com/a/KHiJQ
+- In-game screen - https://imgur.com/a/TOgiu
