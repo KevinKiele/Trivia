@@ -1,1 +1,84 @@
-Hallo
+Technisch ontwerp WebIK
+Gemaakt door: Martin Kana, Vincent van Triest en Kevin Kiele
+Student Nummers: 11710675, 10439137 en 12014966
+Inleverdatum: 17/01/2018
+Controllers
+De website, die wij gaan bouwen, is een domein waar een trivia spel op gespeeld kan worden.
+Ons basis idee is een spel met 1 speler (zie project voorstel) Hiervoor hebben wij de volgende routes, oftewel pagina’s, bedacht:
+Homepagina. → @homepage
+Hier wordt het spel kort uitgelegd (gebruik, buttons etc.).
+Linksboven van de pagina moet een home button staan, die de gebruiker navigeert naar de homepagina. Rechtsboven komen twee knoppen te staan met Login en Registreer.
+Dit zal vooral bestaan uit html en css
+Login. → @login
+Op het login scherm worden twee invulvelden weergeven (gebruikersnaam en wachtwoord). Onder deze velden staat een button met “Log In”.
+Home knop is linksboven op iedere pagina te bereiken. Onder het invoeren van gegevens staat een knop met “Register” onder een stukje text: “Don’t have an account?”. Met de gegevens van finance zullen wij dit reproduceren.
+
+Registreren. → @register
+De registratiepagina heeft vier invulvelden met onder andere gebruikersnaam, wachtwoord, herhaal wachtwoord en email.
+Onder deze velden staat een “Registreer” knop. Na registratie automatisch verwijzen naar “Login”. Met de gegevens van finance zullen wij dit reproduceren.
+Index. → @index
+Geeft het profiel van de gebruiker simpel weer. Logout knop rechtsboven. Wachtwoord veranderen kan via de knop naast Logout. Aantal munten zichtbaar.
+Met POST zullen deze gegevens in de index worden gezet.
+Join a Lobby.  → @lobby
+Deze pagina geeft een pagina weer waar lobby’s te zien zijn. De speler kan op deze lobby klikken om het spel te beginnen.
+POST zal er voor zorgen dat de speler zich aanmeldt voor de lobby, GET zal lezen dat de speler er is en het spel zal beginnen
+Player_action
+- Het spel is click-based. Wij registreren wat de speler doet(klikken op een deur van de vierkant, klikken op het antwoord van de vraag).
+GET zal dit registreren en lezen of dit antwoord juist is of niet. Hierna zal de speler bewegen of niet.
+(tenzij dit niet kan, dan zal ik verder onderzoek doen hierna).
+Wanneer de schatkist gevonden is en juist beantwoord zal de speler terug gaan naar zijn profiel. (winmelding toevoegen en tokens gewonnen toevoegen)
+After the Game
+De speler zit op zijn profiel. Hier kan hij weer gaan naar lobby’s of uitloggen.
+Succesfully Logged Out.
+De pagina die weergeven wordt nadat een gebruiker uitgelogd heeft.
+Toevoeging:
+Bij één speler zal er worden bijgehouden hoeveel vragen de speler goed of fout had in het potje. Bij twee spelers gaat het om wie het eerst de schatkist vindt.
+Views
+-afbeelding plaatsen
+Helpers
+Helpers.py wordt ons bestand waar functies in staan die wij vaak nodig hebben:
+apology()
+Een functie die een pagina weergeeft met een error (bijvoorbeeld “gebruikersnaam niet ingevuld”)
+question()
+Een functie die een willekeurige trivia vraag uit een database haalt en returned.
+login_required()
+Een functie die ervoor zorgt dat de gebruiker ingelogd moet zijn om bepaalde pagina’s te bereiken.
+Check()
+Een functie die de database leest en checkt of de vraag goed is.
+Import time → runtime
+winner()
+Functie die pagina weergeeft als je gewonnen hebt
+Movement()
+De beweging van de speler na het beantwoorden van de juiste deur.
+
+
+
+
+Update projectvoorstel
+Oude minimale eisen
+1 speler
+Aantal vragen + fout of goed
+Schatkist
+Map, 10 bij 10, vierkanten
+Registreren en inloggen
+Punten ipv geld
+Categorie  voor een map
+Animatie
+één map, bewegingen dmv klikken
+op de map zie je een x waar je al geweest bent
+je kan lopen door het vakje waar de x is.
+Optioneel:
+Highscore
+Nieuwe minimale eisen
+1 speler die een spel kan spelen waar hij/zij het aantal beantwoordde vragen ziet. Bovendien kan het aantal goed en fout beantwoordde vragen worden bekeken.
+Map van 10 bij 10 vierkanten.
+Registreren en inloggen.
+Homepagina met informatie en verwijzingen naar login en registreer.
+Index met profiel van gebruiker en mogelijkheid om naar “Lobbypagina” te gaan.
+Lobbypagina waar gebruikers een lobby kunnen joinen en het spel gaat starten.
+Interface van het spel, dus vragen weergeven op de pagina en checken of antwoorden goed beantwoord worden. Bij goed antwoord mag de speler een stap zetten.
+Bij fout antwoord krijg je een nieuwe vraag.
+Schatkist opent als de vraag goed beantwoord wordt bij een schatkistvraag. Deze schatkist moet gevonden worden en staat iedere game op een random plek.
+Verschillende categorieën van vragen.
+Optioneel:
+Highscore
