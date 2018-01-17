@@ -82,3 +82,12 @@ Schatkist opent als de vraag goed beantwoord wordt bij een schatkistvraag. Deze 
 Verschillende categorieën van vragen.
 Optioneel:
 Highscore
+
+Views:
+- Pre Login Homepage
+- Post Login Homepage
+- Login Screen
+- Register screen
+- Lobby Selection Screen
+- Lobby Screen
+- In-game screen
