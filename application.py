@@ -106,7 +106,7 @@ def register():
 
         # checkt gebruikersnaam & wachtwoord & herhaling wachtwoord
         if not request.form.get("username"):
-            return apology("Gebrgit auikersnaam is een verplicht veld")
+            return apology("Gebruikersnaam is een verplicht veld")
 
         elif not request.form.get("password"):
             return apology("Wachtwoord is een verplicht veld")
@@ -118,6 +118,16 @@ def register():
         # kijkt of ingevulde paswoorden gelijk zijn
         elif request.form.get("password") != request.form.get("passwordagain"):
             return apology("Wachtwoorden komen niet overeen")
+
+        rows = db.execute("SELECT * FROM users WHERE username = :username", username=request.form.get("username"))
+
+        if len(rows) == 1:
+            return apology("Onjuiste gebruikersnaam")
+
+        else:
+            opgeslagen = db.execute("INSERT INTO users (username,hash) VALUES(:username, :hash)", username=request.form.get("username"),hash=pwd_context.hash(request.form.get("password")))
+
+        session["user_id"] = opgeslagen
 
         # return naar login pagina
         return render_template("login.html")
