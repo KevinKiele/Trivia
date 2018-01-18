@@ -101,6 +101,9 @@ def quote():
 def register():
     """Register user."""
 
+    # forget any user_id
+    session.clear()
+
     # methode
     if request.method == "POST":
 
@@ -119,18 +122,19 @@ def register():
         elif request.form.get("password") != request.form.get("passwordagain"):
             return apology("Wachtwoorden komen niet overeen")
 
-        rows = db.execute("SELECT * FROM users WHERE username = :username", username=request.form.get("username"))
 
-        if len(rows) == 1:
-            return apology("Onjuiste gebruikersnaam")
+        # TODO insert data into users database
+        rijen = db.execute("INSERT INTO users (username, hash) VALUES(:username, :hash)", username=request.form.get("username"), hash=pwd_context.hash(request.form.get("password")))
 
-        else:
-            opgeslagen = db.execute("INSERT INTO users (username,hash) VALUES(:username, :hash)", username=request.form.get("username"),hash=pwd_context.hash(request.form.get("password")))
+        rijen = db.execute("SELECT * FROM users WHERE username = :username", username=request.form.get("username"))
 
-        session["user_id"] = opgeslagen
+        if len(rijen) != 1 or not pwd_context.verify(request.form.get("password"), rijen[0]["hash"]):
+            return apology("Wachtwoord en/of gebruikersnaam onjuist")
+
+        session["user_id"] = rijen[0]["id"]
 
         # return naar login pagina
-        return render_template("login.html")
+        return redirect(url_for("index"))
 
     else:
         return render_template("register.html")
