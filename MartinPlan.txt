@@ -1,0 +1,6 @@
+Link van de vragen: https://opentdb.com/api.php?amount=50&category=11
+
+Online Json reader gebruiken.
+Pagina voor de game vaststellen waar in ik kan werken
+Alles goed lezen zodat ik het begrijp
+Leggooo
