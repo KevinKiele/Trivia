@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Game
+{% endblock %}
+
+{% block main %}
+    <form action="{{ url_for('game') }}" method="post">
+        <fieldset>
+            <div class="form-group">
+                <p><b>The history of this battle</b></p>
+                <p>
+                    The once great race of humanity has diminished to but a select group of survivors left over from the Neverending War.
+                    The survivors were divided in coallitions with the main aim to retrieve and secure the abandoned war treasures around the world in order to establish themselves as the ruling coallition.
+                    Because weapons and war destroyed the face of the earth, the coallitions agreed upon never using weapons again, but instead turn to intellect to fight out their differences.
+                </p>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-default" type="submit">Play</button>
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}

@@ -144,3 +144,13 @@ def register():
 @login_required
 def sell():
     return apology("TODO")
+
+@app.route("/game", methods=["GET", "POST"])
+@login_required
+def game():
+
+    # methode
+    if request.method == "POST":
+        print("test")
+    else:
+        return render_template("game.html")
