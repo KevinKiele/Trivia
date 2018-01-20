@@ -4,3 +4,7 @@ Online Json reader gebruiken.
 Pagina voor de game vaststellen waar in ik kan werken
 Alles goed lezen zodat ik het begrijp
 Leggooo
+
+----
+Mini quize maken in browers gelukt, moet nog na submit laten zien hoeveel goed was van het totaal.
+Moet nog onze datafile kunnen lezen en gebruiken als vragen in quize voorbeeld
