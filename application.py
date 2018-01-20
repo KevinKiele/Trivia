@@ -151,6 +151,6 @@ def game():
 
     # methode
     if request.method == "POST":
-        print("test")
+        return apology("test")
     else:
         return render_template("game.html")
