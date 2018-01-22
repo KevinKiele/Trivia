@@ -135,19 +135,19 @@ def wachtwoordveranderen():
         # query database for username
         rijen = db.execute("SELECT * FROM users WHERE username = :username", username=request.form.get("username"))
 
-        # make sure passwords match
-        if len(rijen) == 1 or not pwd_context.verify(request.form.get("nieuwwachtwoord"), rijen[0]["hash"]):
-            return apology("Onjuiste gebruikersnaam en/of wachtwoord")
+        # make sure old password matches //werkt niet
+        if pwd_context.verify(request.form.get("nieuwwachtwoord"), rijen[0]["hash"]):
+            return apology("Wachtwoorden komen niet overeen")
 
         # change the password in the database
         rows = db.execute("UPDATE users SET hash = :hash WHERE id = :id", hash=pwd_context.hash(request.form.get("nieuwwachtwoord")), id=session["user_id"])
 
         session["user_id"] = rows
 
-        return redirect(url_for("homepage"))
+        return redirect(url_for("wachtwoordveranderd"))
 
     else:
-        return render_templade("wachtwoordveranderen.html")
+        return render_template("wachtwoordveranderen.html")
 
 @app.route("/homepage", methods=["GET", "POST"])
 @login_required
@@ -157,9 +157,14 @@ def homepage():
     # methode
     if request.method == "POST":
 
-        return render_template("game.html")
+        return render_template("homepage.html")
     else:
         return render_template("homepage.html")
+
+@app.route("/wachtwoordveranderd", methods=["GET", "POST"])
+@login_required
+def wachtwoordveranderd():
+    return render_template("wachtwoordveranderd.html")
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -186,14 +191,13 @@ def register():
         elif request.form.get("password") != request.form.get("passwordagain"):
             return apology("Wachtwoorden komen niet overeen")
 
-
         # TODO insert data into users database
         rijen = db.execute("INSERT INTO users (username, hash) VALUES(:username, :hash)", username=request.form.get("username"), hash=pwd_context.hash(request.form.get("password")))
 
         rijen = db.execute("SELECT * FROM users WHERE username = :username", username=request.form.get("username"))
 
         if len(rijen) != 1 or not pwd_context.verify(request.form.get("password"), rijen[0]["hash"]):
-            return apology("Wachtwoord en/of gebruikersnaam onjuist")
+            return apologyy("Wachtwoord en/of gebruikersnaam onjuist")
 
         session["user_id"] = rijen[0]["id"]
 

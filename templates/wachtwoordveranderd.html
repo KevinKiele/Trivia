@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Password Changed
+{% endblock %}
+
+{% block main %}
+    <form action="{{ url_for('homepage') }}" method="post">
+        <fieldset>
+            <h1 style="color: #009999;">
+                PASSWORD SUCCESFULLY CHANGED
+                </h1>
+            <div class="form-group">
+                <button class="btn btn-info" type="submit">RETURN TO HOMEPAGE</button>
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}
