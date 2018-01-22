@@ -141,12 +141,8 @@ def wachtwoordveranderen():
 @login_required
 def homepage():
     """Homepagina."""
-<<<<<<< HEAD
 
     # methode
-=======
-# methode
->>>>>>> 4f124edc6ea390a17392ff2f065afc185960366d
     if request.method == "POST":
 
         return render_template("game.html")
