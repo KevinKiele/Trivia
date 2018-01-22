@@ -90,8 +90,8 @@ def logout():
     # forget any user_id
     session.clear()
 
-    # redirect user to login form
-    return redirect(url_for("login"))
+    # redirect user to prelogin homepage
+    return redirect(url_for("preloginhomepage"))
 
 @app.route("/preloginhomepage", methods={"GET", "POST"})
 def preloginhomepage():
