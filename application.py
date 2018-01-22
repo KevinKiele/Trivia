@@ -80,7 +80,7 @@ def login():
 
     # else if user reached route via GET (as by clicking a link or via redirect)
     else:
-        return render_template("login")
+        return render_template("login.html")
 
 
 
