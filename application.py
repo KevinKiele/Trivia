@@ -37,16 +37,6 @@ def index():
 
     return apology("TODO")
 
-@app.route("/buy", methods=["GET", "POST"])
-@login_required
-def buy():
-    return apology("TODO")
-
-@app.route("/history")
-@login_required
-def history():
-    return apology("TODO")
-
 @app.route("/login", methods=["GET", "POST"])
 def login():
     """Log user in."""
