@@ -3,6 +3,7 @@ from flask import Flask, flash, redirect, render_template, request, session, url
 from flask_session import Session
 from passlib.apps import custom_app_context as pwd_context
 from tempfile import mkdtemp
+import random, copy
 
 from helpers import *
 #testcomment
@@ -144,3 +145,53 @@ def register():
 @login_required
 def sell():
     return apology("TODO")
+
+
+# Alles dat te maken heeft met de quize game zit hieronder
+
+#Tijdelijke dataset
+original_questions = {
+ 'Taj Mahal':['Agra','New Delhi','Mumbai','Chennai'],
+ 'Great Wall of China':['China','Beijing','Shanghai','Tianjin'],
+ 'Petra':['Ma\'an Governorate','Amman','Zarqa','Jerash'],
+ 'Machu Picchu':['Cuzco Region','Lima','Piura','Tacna'],
+ 'Egypt Pyramids':['Giza','Suez','Luxor','Tanta'],
+ 'Colosseum':['Rome','Milan','Bari','Bologna'],
+ 'Christ the Redeemer':['Rio de Janeiro','Natal','Olinda','Betim']
+}
+
+questions = copy.deepcopy(original_questions)
+
+def shuffle(q):
+    selected_keys = []
+    i = 0
+    while i < len(q):
+        current_selection = random.choice(list(q.keys()))
+        if current_selection not in selected_keys:
+            selected_keys.append(current_selection)
+            i = i+1
+    return selected_keys
+
+
+
+@app.route("/game", methods=["GET", "POST"])
+@login_required
+def game():
+    questions_shuffled = shuffle(questions)
+    for i in questions.keys():
+        random.shuffle(questions[i])
+        return render_template('game.html', q = questions_shuffled, o = questions)
+
+@app.route("/answer", methods=["GET", "POST"])
+@login_required
+def game_answer():
+    correct = 0
+    for i in questions.keys():
+        answered = request.form[i]
+        if original_questions[i][0] == answered:
+            correct = correct + 1
+    return render_template("answer.html")
+
+
+
+
