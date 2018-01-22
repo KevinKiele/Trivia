@@ -82,11 +82,6 @@ def login():
     else:
         return render_template("preloginhomepage.html")
 
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 8fb570332fb98c2e3263b42013cd2c5b604f08f4
 @app.route("/logout")
 def logout():
     """Log user out."""
