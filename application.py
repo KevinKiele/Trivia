@@ -132,21 +132,22 @@ def wachtwoordveranderen():
         elif not request.form.get("nieuwwachtwoordagain"):
             return apology("Herhaal wachtwoord is een verplicht veld.")
 
-        # TODO zorgen dat ingevulde gegevens overeenkomen met de gebruiker
-        # TODO zorgen dat je niet wachtwoorden van andere users kan veranderen
-        #rijen = db.execute("SELECT * FROM users WHERE username = :username", username=request.form.get("username"))
-        #if len(rijen) != 1 or not pwd_context.verify(request.form.get("nieuwwachtwoord"), rijen[0]["hash"]):
+        # query database for username
+        rijen = db.execute("SELECT * FROM users WHERE username = :username", username=request.form.get("username"))
 
-        # session["user_id"] = rijen[0]["id"]
-        #TODO verander wachtwoord in de database
-        # verander_wachtwoord = db.execute("UPDATE users SET hash = :hash WHERE username =:username", username=request.form.get("username"), hash=pwd_context.hash(request.form.get("nieuwwachtwoord")))
+        # make sure passwords match
+        if len(rijen) == 1 or not pwd_context.verify(request.form.get("nieuwwachtwoord"), rijen[0]["hash"]):
+            return apology("Onjuiste gebruikersnaam en/of wachtwoord")
 
-        # return naar login pagina
-        return redirect(url_for("wachtwoordveranderen"))
+        # change the password in the database
+        rows = db.execute("UPDATE users SET hash = :hash WHERE id = :id", hash=pwd_context.hash(request.form.get("nieuwwachtwoord")), id=session["user_id"])
+
+        session["user_id"] = rows
+
+        return redirect(url_for("homepage"))
 
     else:
-        return render_template("wachtwoordveranderen.html")
-
+        return render_templade("wachtwoordveranderen.html")
 
 @app.route("/homepage", methods=["GET", "POST"])
 @login_required
