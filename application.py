@@ -76,17 +76,13 @@ def login():
         session["user_id"] = rows[0]["id"]
 
         # redirect user to home page
-        return redirect(url_for("information"))
+        return redirect(url_for("homepage"))
 
     # else if user reached route via GET (as by clicking a link or via redirect)
     else:
         return render_template("login.html")
 
-<<<<<<< HEAD
-=======
 
-
->>>>>>> cf354b31cded46ea8f678a2ed66ebae827e3d239
 @app.route("/logout")
 def logout():
     """Log user out."""
