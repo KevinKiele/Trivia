@@ -5,7 +5,12 @@
 {% endblock %}
 
 {% block main %}
-
+    <form action="{{ url_for('login') }}" method="post">
+        <fieldset>
+                <div class="form-group">
+                    <button class="btn btn-default" type="submit">Go to Log In</button>
+                </div>
+        </fieldset>
 <h1 style="color: #f2f2f2;">
     Locked Up
     </h1>
@@ -37,5 +42,6 @@ Suddenly you woke up in front of some sort of futuristic looking clone of Albert
 <br>
 "It's time to make a decision, Soldier, which coallition will it be?"
     </h3>
+
 
 {% endblock %}

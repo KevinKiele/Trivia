@@ -80,8 +80,7 @@ def login():
 
     # else if user reached route via GET (as by clicking a link or via redirect)
     else:
-        return render_template("preloginhomepage.html")
-
+        return render_template("login.html")
 
 @app.route("/logout")
 def logout():
@@ -203,11 +202,6 @@ def register():
     else:
         return render_template("register.html")
 
-
-@app.route("/sell", methods=["GET", "POST"])
-@login_required
-def sell():
-    return apology("TODO")
 
 
 # Alles dat te maken heeft met de quize game zit hieronder
