@@ -66,7 +66,7 @@ def login():
         session["user_id"] = rows[0]["id"]
 
         # redirect user to home page
-        return redirect(url_for("index"))
+        return redirect(url_for("homepage"))
 
     # else if user reached route via GET (as by clicking a link or via redirect)
     else:
@@ -141,10 +141,7 @@ def wachtwoordveranderen():
 @login_required
 def homepage():
     """Homepagina."""
-    # forget any user_id
-    session.clear()
-
-    # methode
+# methode
     if request.method == "POST":
 
         return render_template("game.html")
@@ -188,7 +185,7 @@ def register():
         session["user_id"] = rijen[0]["id"]
 
         # return naar login pagina
-        return redirect(url_for("index"))
+        return redirect(url_for("homepage"))
 
     else:
         return render_template("register.html")
