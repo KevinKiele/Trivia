@@ -1,17 +1,13 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Home
+    My Profile
 {% endblock %}
 
 {% block main %}
 
-
-<h1 style="color: #f2f2f2;">
-=======
-
 <h1 style="color: #009999;">
-    Locked Up
+    Your Profile
     </h1>
 <br>
 
@@ -19,9 +15,7 @@
 
 
 <div>
-Welcome to the year 2047. The once great race of humanity has diminished to but a select group of survivors left over from the Neverending War.
-The survivors were divided in coallitions with the main aim to retrieve and secure the abandoned war treasures around the world in order to establish themselves as the ruling coallition.
-Because weapons and war destroyed the face of the earth, the coallitions agreed upon never using weapons again, but instead turn to intellect to fight out their differences.
+We would like to welcome you to Trivia Board Game
 </div>
 
 <div>
@@ -54,15 +48,5 @@ Peeping from the bushes, you overheard their conversation.
 <br />"It's time to make a decision, Soldier, which coallition will it be?"
 </div>
     </p>
-<div>
-    </br>
-{% if not session.user_id %}
-    <a href="register" class="btn btn-info" role="button">REGISTER NOW</a>
-       <a href="login" class="btn btn-info" role="button">LOGIN</a>
-    </div>
-{% endif %}
-{% if session.user_id %}
-    <a href="game" class="btn btn-info" role="button">PLAY THE GAME!</a>
-    <a href="aboutus" class="btn btn-info" role="button">ABOUT US!</a>
-{% endif %}
+</div>
 {% endblock %}

@@ -1,9 +1,63 @@
-<h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae justo ornare, egestas turpis in, placerat velit. Aliquam tellus tellus, scelerisque ac quam ut, viverra fermentum elit. Vestibulum eu tellus est. Vivamus varius fringilla condimentum. Aliquam ac neque a nibh ullamcorper facilisis. Nullam quis sagittis nulla. Morbi tempor vitae risus ac luctus. Pellentesque tristique mi ac diam lobortis bibendum. Sed a scelerisque mauris. Quisque nec turpis et felis dignissim pellentesque placerat in est.
+{% extends "layout.html" %}
 
-Vivamus luctus eros nec augue sagittis hendrerit. Sed volutpat at diam quis viverra. Curabitur tellus arcu, condimentum id metus in, maximus euismod lorem. Cras sed lectus volutpat, malesuada nunc sit amet, fermentum arcu. Morbi auctor lectus magna, vitae dapibus neque vehicula ac. Curabitur aliquet nunc magna. Pellentesque et molestie leo. Nam vel venenatis sapien. Phasellus venenatis semper augue vulputate laoreet. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis bibendum mi nec enim aliquam lobortis. Sed fermentum a ex mollis molestie. Aenean sit amet justo maximus, ornare eros molestie, congue velit.
+{% block title %}
+    Game Information
+{% endblock %}
 
-Integer ultricies ultricies tortor et tincidunt. Aliquam et volutpat leo, at feugiat velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse turpis quam, mollis sed feugiat in, lobortis sollicitudin sapien. Vestibulum id tempus erat. Praesent tincidunt vestibulum massa, vel mattis nulla posuere egestas. Aliquam ac dui nulla. Donec tempus elit et quam vestibulum, vestibulum finibus nisi posuere. Ut ut tortor vitae nulla elementum pretium. Vivamus in justo lacinia, tempor ante nec, varius nisl. Donec placerat, tellus vitae fringilla porttitor, nunc metus faucibus augue, nec porta velit sapien vel erat. Curabitur varius dolor dolor, ac rhoncus nulla finibus sit amet. Nam in congue elit. Cras lobortis tellus sit amet velit tempor, eu ultrices lacus feugiat. Quisque enim tortor, iaculis vel pretium commodo, feugiat et enim.
+{% block main %}
 
-Fusce ultrices, erat non commodo fermentum, erat ipsum tristique elit, at ornare nunc turpis nec ante. Proin feugiat interdum purus et tincidunt. Maecenas dapibus in orci elementum dictum. Sed tempus eros arcu, eu ornare est egestas eget. Nullam felis ante, fermentum quis ornare et, eleifend vel tellus. Praesent malesuada pharetra finibus. Pellentesque suscipit volutpat leo non luctus. Nam nec rutrum libero.
+<h1 style="color: #009999;">
+    How To Play
+    </h1>
+<br>
 
-Sed pharetra dapibus ultrices. Maecenas ornare fermentum neque, eget tincidunt enim rutrum a. Proin tincidunt erat ac odio elementum scelerisque. Nulla tempor orci sit amet enim molestie imperdiet. Morbi vel dictum erat. Pellentesque sagittis dignissim magna, id viverra elit sodales a. Fusce cursus elit porta euismod varius. Ut molestie lectus sed justo mollis, vel rutrum ipsum ornare. Etiam sit amet turpis egestas, bibendum arcu in, commodo enim.</h1>
+<p style=" color: #009999">
+
+
+<div>
+We would like to welcome you to Trivia Board Game
+</div>
+
+<div>
+</br>
+And then ofcourse there's you...
+</div>
+
+<div>
+</br>
+You were living under a rock for the last few years without having the slightest clue about what was going on in the world.
+Convinced that you were the last survivor, doomed to wander the earth alone, you suddenly stumbled upon a group of Treasure Hunters.
+Peeping from the bushes, you overheard their conversation.
+</div>
+
+<div>
+</br>
+"Hey Kev, what's that vile stench? Did you let one slip, you filthy fuck?"
+<br />"Nah bruh, must be your upper lip."
+<div/>
+
+<br />The hunters started following their noses, leading them straight to you. (Which wasn't that hard.)
+
+<br />"Goddamn dude, you smell horrible! What happened to you?"
+
+<br />You started mumbling something about being the last survivor, your belly and a shower.
+<br />One of the Hunters started speaking such intellectual words that you feinted.
+<div>
+<br />Suddenly you woke up in front of some sort of futuristic looking clone of Albert Einstein.
+
+<br />"It's time to make a decision, Soldier, which coallition will it be?"
+</div>
+    </p>
+<div>
+    </br>
+{% if session.user_id %}
+        <a href="game" class="btn btn-info" role="button">PLAY NOW</a>
+        <a href="aboutus" class="btn btn-info" role="button">ABOUT US</a>
+{% endif %}
+{% if not session.user_id %}
+        <a href="login" class="btn btn-info" role="button">LOGIN</a>
+        <a href="register" class="btn btn-info" role="button">REGISTER</a>
+        <a href="aboutus" class="btn btn-info" role="button">ABOUT US</a>
+{% endif %}
+</div>
+{% endblock %}

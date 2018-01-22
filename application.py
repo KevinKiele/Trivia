@@ -98,10 +98,18 @@ def aboutus():
 
     return render_template("aboutus.html")
 
+<<<<<<< HEAD
 @app.route("/lobbyselection", methods=["GET", "POST"])
 @login_required
 def lobbyselection():
     return render_template("lobbyselection.html")
+=======
+@app.route("/myprofile", methods=["GET", "POST"])
+@login_required
+def myprofile():
+
+    return render_template("myprofile.html")
+>>>>>>> 874954be584e27299986ed2e6258da34955dba68
 
 @app.route("/wachtwoordveranderen", methods=["GET", "POST"])
 @login_required
