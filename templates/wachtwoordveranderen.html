@@ -8,6 +8,9 @@
     <form action="{{ url_for('wachtwoordveranderen') }}" method="post">
         <fieldset>
             <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Gebruikersnaam" type="text"/>
+            </div>
+            <div class="form-group">
                 <input autocomplete="off" autofocus class="form-control" name="oudwachtwoord" placeholder="Oud wachtwoord" type="password"/>
             </div>
             <div class="form-group">

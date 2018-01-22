@@ -93,10 +93,69 @@ def logout():
     # redirect user to login form
     return redirect(url_for("login"))
 
-@app.route("/quote", methods=["GET", "POST"])
+
+@app.route("/information", methods={"GET", "POST"})
+def information():
+
+    return render_template("information.html")
+
+@app.route("/aboutus", methods={"GET", "POST"})
+def aboutus():
+
+    return render_template("aboutus.html")
+
+@app.route("/wachtwoordveranderen", methods=["GET", "POST"])
 @login_required
-def quote():
-    return apology("TODO")
+def wachtwoordveranderen():
+
+        # methode & pagina
+    if request.method == "GET":
+        return render_template("wachtwoordveranderen.html")
+
+    if request.method == "POST":
+
+        if not request.form.get("username"):
+            return apology("Gebruikersnaam is een verplicht veld")
+
+        elif not request.form.get("oudwachtwoord"):
+            return apology("Oud wachtwoord is een verplicht veld")
+
+
+        elif not request.form.get("nieuwwachtwoord"):
+            return apology("Nieuw wachtwoord is een verplicht veld")
+
+        elif not request.form.get("nieuwwachtwoordagain"):
+            return apology("Herhaal wachtwoord is een verplicht veld.")
+
+        # TODO zorgen dat ingevulde gegevens overeenkomen met de gebruiker
+        # TODO zorgen dat je niet wachtwoorden van andere users kan veranderen
+        #rijen = db.execute("SELECT * FROM users WHERE username = :username", username=request.form.get("username"))
+        #if len(rijen) != 1 or not pwd_context.verify(request.form.get("nieuwwachtwoord"), rijen[0]["hash"]):
+
+        # session["user_id"] = rijen[0]["id"]
+        #TODO verander wachtwoord in de database
+        # verander_wachtwoord = db.execute("UPDATE users SET hash = :hash WHERE username =:username", username=request.form.get("username"), hash=pwd_context.hash(request.form.get("nieuwwachtwoord")))
+
+        # return naar login pagina
+        return redirect(url_for("wachtwoordveranderen"))
+
+    else:
+        return render_template("wachtwoordveranderen.html")
+
+
+@app.route("/homepage", methods=["GET", "POST"])
+@login_required
+def homepage():
+    """Homepagina."""
+    # forget any user_id
+    session.clear()
+
+    # methode
+    if request.method == "POST":
+
+        return render_template("game.html")
+    else:
+        return render_template("homepage.html")
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
