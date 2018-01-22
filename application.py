@@ -98,6 +98,11 @@ def aboutus():
 
     return render_template("aboutus.html")
 
+@app.route("/lobbyselection", methods=["GET", "POST"])
+@login_required
+def lobbyselection():
+    return render_template("lobbyselection.html")
+
 @app.route("/wachtwoordveranderen", methods=["GET", "POST"])
 @login_required
 def wachtwoordveranderen():
@@ -217,7 +222,6 @@ def shuffle(q):
             selected_keys.append(current_selection)
             i = i+1
     return selected_keys
-
 
 
 @app.route("/game", methods=["GET", "POST"])
