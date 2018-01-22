@@ -93,6 +93,10 @@ def logout():
     # redirect user to login form
     return redirect(url_for("login"))
 
+@app.route("/preloginhomepage", methods={"GET", "POST"})
+def preloginhomepage():
+
+    return render_template("preloginhomepage.html")
 
 @app.route("/information", methods={"GET", "POST"})
 def information():
