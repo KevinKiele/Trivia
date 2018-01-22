@@ -225,7 +225,6 @@ def shuffle(q):
     return selected_keys
 
 
-
 @app.route("/game", methods=["GET", "POST"])
 @login_required
 def game():
@@ -237,11 +236,12 @@ def game():
 @app.route("/answer", methods=["GET", "POST"])
 @login_required
 def game_answer():
-    correct = 0
-    for i in questions.keys():
-        answered = request.form[i]
-        if original_questions[i][0] == answered:
-            correct = correct + 1
+    # dit heb ik even in comment mode gezet zodat ik de layout kan checken
+    #correct = 0
+    #for i in questions.keys():
+    #    answered = request.form[i]
+    #    if original_questions[i][0] == answered:
+    #        correct = correct + 1
     return render_template("answer.html")
 
 
