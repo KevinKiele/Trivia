@@ -141,8 +141,6 @@ def wachtwoordveranderen():
 @login_required
 def homepage():
     """Homepagina."""
-    # forget any user_id
-    session.clear()
 
     # methode
     if request.method == "POST":
@@ -188,7 +186,7 @@ def register():
         session["user_id"] = rijen[0]["id"]
 
         # return naar login pagina
-        return redirect(url_for("index"))
+        return redirect(url_for("homepage"))
 
     else:
         return render_template("register.html")
