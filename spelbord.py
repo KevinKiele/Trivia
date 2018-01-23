@@ -4,11 +4,11 @@ import random
 breedte = 80
 treasurex = 1
 
-class Kamer:
+class Tile:
     def __init__(self):
         self.Treasure = False
 
-spelbord = [[Kamer() for n in range (10)] for n in range (10)]
+spelbord = [[Tile() for n in range (10)] for n in range (10)]
 
 for n in range (treasurex):
 
