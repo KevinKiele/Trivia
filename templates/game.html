@@ -5,13 +5,14 @@
 {% endblock %}
 
 {% block main %}
-<h1>7 Wonders of the World</h1>
+<h1>Goodluck on your sports Quize!</h1>
 <form action='/answer' method='POST'>
     <ol>
         {% for i in q %}
-            <li>Where is <u>{{i}}</u> located?</li>
+            <li><u>{{i}}</u></li>
             {% for j in o[i] %}
                 <input type='radio' value='{{j}}' name='{{i}}' />{{j}}
+                <br></br>
             {% endfor %}
         {% endfor %}
     </ol>

@@ -8,3 +8,18 @@ Leggooo
 ----
 Mini quize maken in browers gelukt, moet nog na submit laten zien hoeveel goed was van het totaal.
 Moet nog onze datafile kunnen lezen en gebruiken als vragen in quize voorbeeld
+
+
+-------
+Advies Jelle:
+Vragen 1 voor 1 opsturen, als je 20 stuurt met antwoorden erbij en dan in de server zelf 1 voor 1 alls laat zien kan de speler al zien welke vragen komen en welke antwoorden juist zijn.
+
+Wat wil ik:
+1 voor 1 vragen
+Na de vraag zie je meteen of het goed of fout is
+De volgende vraag komt
+
+Wat heb ik nodig hiervoor:
+1 voor 1 vragen uit de database halen
+checken of de vraag juist beantwoord is
+speler ziet nieuwe vraag verschijnen(pagina reload?)

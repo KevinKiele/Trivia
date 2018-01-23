@@ -32,6 +32,7 @@ while x<50:
     # counter
     x +=1
 
+# voeg goed en fout samen voor alle mogelijke antwoorden lijst
 antwoorden = fout
 counter = 0
 while counter <50:

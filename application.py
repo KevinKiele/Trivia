@@ -270,5 +270,3 @@ def game_answer():
     return render_template("answer.html")
 
 
-
-
