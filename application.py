@@ -103,6 +103,21 @@ def aboutus():
 def lobbyselection():
     return render_template("lobbyselection.html")
 
+@app.route("/lobby1", methods=["GET", "POST"])
+@login_required
+def lobbyselection():
+    return render_template("lobby1.html")
+
+@app.route("/lobby2", methods=["GET", "POST"])
+@login_required
+def lobbyselection():
+    return render_template("lobby2.html")
+
+@app.route("/lobby3", methods=["GET", "POST"])
+@login_required
+def lobbyselection():
+    return render_template("lobby3.html")
+
 @app.route("/myprofile", methods=["GET", "POST"])
 @login_required
 def myprofile():
