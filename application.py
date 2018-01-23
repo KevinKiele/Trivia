@@ -105,17 +105,17 @@ def lobbyselection():
 
 @app.route("/lobby1", methods=["GET", "POST"])
 @login_required
-def lobbyselection():
+def lobby1():
     return render_template("lobby1.html")
 
 @app.route("/lobby2", methods=["GET", "POST"])
 @login_required
-def lobbyselection():
+def lobby2():
     return render_template("lobby2.html")
 
 @app.route("/lobby3", methods=["GET", "POST"])
 @login_required
-def lobbyselection():
+def lobby3():
     return render_template("lobby3.html")
 
 @app.route("/myprofile", methods=["GET", "POST"])
