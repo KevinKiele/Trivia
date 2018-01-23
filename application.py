@@ -133,11 +133,18 @@ def wachtwoordveranderen():
             return apology("Herhaal wachtwoord is een verplicht veld.")
 
         # query database for username
-        rijen = db.execute("SELECT * FROM users WHERE username = :username", username=request.form.get("username"))
+        rijen = db.execute("SELECT * FROM users WHERE id = :id", id=session["user_id"])
 
-        # make sure old password matches //werkt niet
-        if pwd_context.verify(request.form.get("nieuwwachtwoord"), rijen[0]["hash"]):
+        # juiste gebruikersnaam invullen // dit werkt blijkbaar maar 1 keer het is dus nodig om hierna uit te loggen en weer in te loggen
+        if request.form.get("username") != rijen[0]["username"]:
+            return apology("Gebruikersnaam is niet correct")
+
+        # make sure old password matches
+        elif not pwd_context.verify(request.form.get("oudwachtwoord"), rijen[0]["hash"]):
             return apology("Wachtwoorden komen niet overeen")
+
+        elif request.form.get("nieuwwachtwoord") != request.form.get("nieuwwachtwoordagain"):
+            return apology("Nieuw wachtwoord en herhaling wachtwoord moeten overeenkomen")
 
         # change the password in the database
         rows = db.execute("UPDATE users SET hash = :hash WHERE id = :id", hash=pwd_context.hash(request.form.get("nieuwwachtwoord")), id=session["user_id"])
@@ -197,7 +204,7 @@ def register():
         rijen = db.execute("SELECT * FROM users WHERE username = :username", username=request.form.get("username"))
 
         if len(rijen) != 1 or not pwd_context.verify(request.form.get("password"), rijen[0]["hash"]):
-            return apologyy("Wachtwoord en/of gebruikersnaam onjuist")
+            return apology("Gebruikersnaam bestaat al")
 
         session["user_id"] = rijen[0]["id"]
 

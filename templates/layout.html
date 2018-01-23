@@ -16,8 +16,7 @@
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-        <title>Trivia Board Game: {% block title %}{% endblock %}</title>
-
+        <title>Locked Up: {% block title %}{% endblock %}</title>
     </head>
 
     <body>
@@ -27,13 +26,8 @@
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <button aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="{{ url_for('preloginhomepage') }}"><span class="blue">Trivia Board Game</span></a>
+                        <a href="#" class="pull-left"><img src="https://imgur.com/n6A3wqE.png" width="40" height="40"></a>
+                        <a class="navbar-brand" href="{{ url_for('preloginhomepage') }}"><span class="blue"> Locked Up</span></a>
                     </div>
                     <div class="collapse navbar-collapse" id="navbar">
                         {% if not session.user_id %}

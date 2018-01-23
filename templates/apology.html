@@ -9,6 +9,9 @@
 
     <div>
         </br>
+{% if session.user_id %}
+            <a href="homepage" class="btn btn-info" role="button">RETURN TO HOMEPAGE</a>
+{% endif %}
 {% if not session.user_id %}
             <a href="login" class="btn btn-info" role="button">RETURN TO LOGIN</a>
     </div>

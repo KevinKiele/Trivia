@@ -5,13 +5,14 @@
 {% endblock %}
 
 {% block main %}
-    <form action="{{ url_for('homepage') }}" method="post">
+    <form action="{{ url_for('logout') }}" method="post">
         <fieldset>
             <h1 style="color: #009999;">
                 PASSWORD SUCCESFULLY CHANGED
                 </h1>
             <div class="form-group">
                 <button class="btn btn-info" type="submit">RETURN TO HOMEPAGE</button>
+                <button class="btn btn-info" type="submit" href="{{ url_for('logout') }}">LOGOUT</button> <!-- werkt nog niet-->
             </div>
         </fieldset>
     </form>
