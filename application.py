@@ -262,11 +262,11 @@ def game():
 @login_required
 def game_answer():
     # dit heb ik even in comment mode gezet zodat ik de layout kan checken
-    #correct = 0
-    #for i in questions.keys():
-    #    answered = request.form[i]
-    #    if original_questions[i][0] == answered:
-    #        correct = correct + 1
+    correct = 0
+    for i in questions.keys():
+        answered = request.form[i]
+        if original_questions[i][0] == answered:
+            correct = correct + 1
     return render_template("answer.html")
 
 

@@ -1,15 +1,6 @@
 import urllib.request
 import json
 
-
-#dicts = {}
-#keys = range(4)
-#values = ["Hi", "I", "am", "John"]
-#for i in keys:
-#        dicts[i] = values[i]
-#print(dicts)
-
-
 # sport vragen
 url = 'https://opentdb.com/api.php?amount=50&category=21'
 req = urllib.request.Request(url)
