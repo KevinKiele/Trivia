@@ -32,16 +32,16 @@
                     <div class="collapse navbar-collapse" id="navbar">
                         {% if not session.user_id %}
                             <ul class="nav navbar-nav">
-                                <li><a href="{{ url_for('information') }}">How The Game Works</a></li>
+                                <li><a href="{{ url_for('information') }}">The Game</a></li>
                                 <li><a href="{{ url_for('aboutus') }}">About Us</a></li>
                             </ul>
                         {% endif %}
                         {% if session.user_id %}
                             <ul class="nav navbar-nav">
-                                <li><a href="{{ url_for('information') }}">How The Game Works</a></li>
+                                <li><a href="{{ url_for('information') }}">The Game</a></li>
                                 <li><a href="{{ url_for('aboutus') }}">About Us</a></li>
                                 <li><a href="{{ url_for('myprofile') }}">My Profile</a></li>
-                                <li><a href="{{ url_for('game') }}">Game</a></li>
+                                <!--GAME WEGGEHAALD, KAN EVT LATER WEER TERUG-->
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a href="{{ url_for('wachtwoordveranderen') }}">Wachtwoord Veranderen</a></li>
