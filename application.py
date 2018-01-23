@@ -4,6 +4,7 @@ from flask_session import Session
 from passlib.apps import custom_app_context as pwd_context
 from tempfile import mkdtemp
 import random, copy
+import database
 
 from helpers import *
 #testcomment
@@ -234,15 +235,7 @@ def register():
 # Alles dat te maken heeft met de quize game zit hieronder
 
 #Tijdelijke dataset
-original_questions = {
- 'Taj Mahal':['Agra','New Delhi','Mumbai','Chennai'],
- 'Great Wall of China':['China','Beijing','Shanghai','Tianjin'],
- 'Petra':['Ma\'an Governorate','Amman','Zarqa','Jerash'],
- 'Machu Picchu':['Cuzco Region','Lima','Piura','Tacna'],
- 'Egypt Pyramids':['Giza','Suez','Luxor','Tanta'],
- 'Colosseum':['Rome','Milan','Bari','Bologna'],
- 'Christ the Redeemer':['Rio de Janeiro','Natal','Olinda','Betim']
-}
+original_questions = database.Trivia
 
 questions = copy.deepcopy(original_questions)
 
