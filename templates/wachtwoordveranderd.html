@@ -11,8 +11,7 @@
                 PASSWORD SUCCESFULLY CHANGED
                 </h1>
             <div class="form-group">
-                <button class="btn btn-info" type="submit">RETURN TO HOMEPAGE</button>
-                <button class="btn btn-info" type="submit" href="{{ url_for('logout') }}">LOGOUT</button> <!-- werkt nog niet-->
+                <a href="{{ url_for('logout') }}" class="btn btn-info" role="button">Log Out</a>
             </div>
         </fieldset>
     </form>

@@ -157,15 +157,13 @@ def wachtwoordveranderen():
 
         # make sure old password matches
         elif not pwd_context.verify(request.form.get("oudwachtwoord"), rijen[0]["hash"]):
-            return apology("Wachtwoorden komen niet overeen")
+            return apology("Wachtwoord is niet correct")
 
         elif request.form.get("nieuwwachtwoord") != request.form.get("nieuwwachtwoordagain"):
             return apology("Nieuw wachtwoord en herhaling wachtwoord moeten overeenkomen")
 
         # change the password in the database
         rows = db.execute("UPDATE users SET hash = :hash WHERE id = :id", hash=pwd_context.hash(request.form.get("nieuwwachtwoord")), id=session["user_id"])
-
-        session["user_id"] = rows
 
         return redirect(url_for("wachtwoordveranderd"))
 
