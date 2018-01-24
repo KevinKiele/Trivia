@@ -249,11 +249,12 @@ def joinlobby3():
 
 # Alles dat te maken heeft met de quize game zit hieronder
 
-# De dataset
+# De dataset importeren
 original_questions = database.Trivia
 
 questions = copy.deepcopy(original_questions)
 
+# schuffle de vragen zodat het juiste antwoord niet altijd achterin staat
 def shuffle(q):
     selected_keys = []
     i = 0
@@ -264,15 +265,8 @@ def shuffle(q):
             i += 1
     return selected_keys
 
-def check():
-    correct = 0
-    for i in questions.keys():
-        answered = request.form[i]
-        if original_questions[i][3] == answered:
-            correct += 1
-    return correct
-
-@app.route("/game", methods=["GET", "POST"])
+#maak de quize aan op een pagina
+@app.route("/game")
 @login_required
 def game():
     questions_shuffled = shuffle(questions)
@@ -280,11 +274,32 @@ def game():
         random.shuffle(questions[i])
         return render_template('game.html', q = questions_shuffled, o = questions)
 
+@app.route('/quiz', methods=['POST'])
+def quiz_answers():
+    correct = 0
+    for i in questions.keys():
+        answered = request.form[i]
+    if original_questions[i][3] == answered:
+        correct += 1
+    return render_template("endscreen.html", q = score)
+
+
 @app.route("/endscreen", methods=["GET", "POST"])
 @login_required
 def endscreen():
     return render_template("endscreen.html")
 
+
+
+#
+#@app.route('/quiz', methods=['POST'])
+#def quiz_answers():
+ #   correct = 0
+ #   for i in questions.keys():
+ #       answered = request.form[i]
+ #   if original_questions[i][0] == answered:
+ #       correct = correct+1
+ #   return '<h1>Correct Answers: <u>'+str(correct)+'</u></h1>'
 
 
 # alles wat met het spelbord te maken heeft zit hier
