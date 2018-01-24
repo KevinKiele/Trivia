@@ -122,7 +122,6 @@ def lobby3():
 @app.route("/myprofile", methods=["GET", "POST"])
 @login_required
 def myprofile():
-
     return render_template("myprofile.html")
 
 @app.route("/wachtwoordveranderen", methods=["GET", "POST"])
