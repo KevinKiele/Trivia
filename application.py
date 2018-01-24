@@ -238,7 +238,9 @@ def joinlobby2():
 @app.route("/joinlobby3", methods=["GET", "POST"])
 @login_required
 def joinlobby3():
+
     if request.method == "POST":
+        return render_template("lobby3.html")
 
 
     else:
