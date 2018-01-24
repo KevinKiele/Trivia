@@ -44,4 +44,3 @@ while counter <50:
     Trivia[vragen[counter]] = antwoorden[counter]
     counter += 1
 
-# test the game

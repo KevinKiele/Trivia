@@ -20,8 +20,6 @@ if app.config["DEBUG"]:
         response.headers["Pragma"] = "no-cache"
         return response
 
-# custom filter
-app.jinja_env.filters["usd"] = usd
 
 # configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_FILE_DIR"] = mkdtemp()
@@ -246,6 +244,13 @@ def shuffle(q):
             i += 1
     return selected_keys
 
+def check():
+    correct = 0
+    for i in questions.keys():
+        answered = request.form[i]
+        if original_questions[i][3] == answered:
+            correct += 1
+    return correct
 
 @app.route("/game", methods=["GET", "POST"])
 @login_required
@@ -258,12 +263,8 @@ def game():
 @app.route("/endscreen", methods=["GET", "POST"])
 @login_required
 def endscreen():
-    correct = 0
-    for i in questions.keys():
-        answered = request.form[i]
-        if original_questions[i][3] == answered:
-            correct += 1
-    return redirect(url_for("endscreen"))
+    return render_template("endscreen.html")
+
 
 
 # alles wat met het spelbord te maken heeft zit hier
