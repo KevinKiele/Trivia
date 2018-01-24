@@ -268,3 +268,11 @@ def game_answer():
     return render_template("answer.html")
 
 
+# alles wat met het spelbord te maken heeft zit hier
+
+@app.route("/spelbordtest", methods=["GET", "POST"])
+def spelbordtest():
+    return render_template("spelbordtest.html")
+
+
+
