@@ -267,3 +267,11 @@ def endscreen():
     return redirect(url_for("endscreen"))
 
 
+# alles wat met het spelbord te maken heeft zit hier
+
+@app.route("/spelbordtest", methods=["GET", "POST"])
+def spelbordtest():
+    return render_template("spelbordtest.html")
+
+
+
