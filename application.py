@@ -105,7 +105,14 @@ def lobbyselection():
 @app.route("/lobby1", methods=["GET", "POST"])
 @login_required
 def lobby1():
-    return render_template("lobby1.html")
+    if request.method == "POST":
+
+        # puts players in sql // werkt niet
+        join_lobby = db.execute("INSERT INTO lobby1 (id, lobbynaam) VALUES(:id, :lobbynaam", id=session["user_id"], lobbynaam="lobby1")
+
+        return render_template("lobby1.html")
+    else:
+        return render_template("lobby1.html")
 
 @app.route("/lobby2", methods=["GET", "POST"])
 @login_required
