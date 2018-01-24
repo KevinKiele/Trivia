@@ -234,7 +234,7 @@ def register():
 
 # Alles dat te maken heeft met de quize game zit hieronder
 
-#Tijdelijke dataset
+# De dataset
 original_questions = database.Trivia
 
 questions = copy.deepcopy(original_questions)
@@ -246,7 +246,7 @@ def shuffle(q):
         current_selection = random.choice(list(q.keys()))
         if current_selection not in selected_keys:
             selected_keys.append(current_selection)
-            i = i+1
+            i += 1
     return selected_keys
 
 

@@ -10,7 +10,6 @@ r = urllib.request.urlopen(req).read()
 cont = json.loads(r.decode('utf-8'))
 counter = 0
 
-
 # lijsten en dict aanmaken
 Trivia = {}
 goed = []
