@@ -225,6 +225,24 @@ def register():
     else:
         return render_template("register.html")
 
+@app.route("/joinlobby1", methods=["GET", "POST"])
+@login_required
+def joinlobby1():
+    return render_template("lobby1.html")
+
+@app.route("/joinlobby2", methods=["GET", "POST"])
+@login_required
+def joinlobby2():
+    return render_template("lobby2.html")
+
+@app.route("/joinlobby3", methods=["GET", "POST"])
+@login_required
+def joinlobby3():
+    if request.method == "POST":
+
+
+    else:
+        return render_template("lobby3.html")
 
 
 # Alles dat te maken heeft met de quize game zit hieronder
