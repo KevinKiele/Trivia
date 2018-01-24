@@ -2,7 +2,11 @@ import urllib.request
 import json
 
 # alleen vragen met 4 antwoorden kunnen --> in mijn dict is het 4de antworode altijd de juiste, en dit wordt ook gelezen in application.py
-url = 'https://opentdb.com/api.php?amount=50&category=21&type=multiple'
+#history
+#1= algemeen, 2 = geschiedenis, 3 =
+urllijst = ["https://opentdb.com/api.php?amount=50&category=9&type=multiple", 'https://opentdb.com/api.php?amount=50&category=23&type=multiple', 'https://opentdb.com/api.php?amount=50&category=21&type=multiple']
+
+url = 'https://opentdb.com/api.php?amount=50&category=23&type=multiple'
 req = urllib.request.Request(url)
 
 # url lezen en decoden voor gebruik
