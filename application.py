@@ -256,15 +256,15 @@ def game():
         random.shuffle(questions[i])
         return render_template('game.html', q = questions_shuffled, o = questions)
 
-@app.route("/endscreen", methods=["GET", "POST"])
-@login_required
-def endscreen():
-    correct = 0
-    for i in questions.keys():
-        answered = request.form[i]
-        if original_questions[i][3] == answered:
-            correct += 1
-    return redirect(url_for("endscreen"))
+#@app.route("/endscreen", methods=["POST"])
+#@login_required
+#def endscreen():
+#    correct = 0
+#    for i in questions.keys():
+#        answered = request.form[i]
+#        if original_questions[i][3] == answered:
+#            correct += 1
+#     return render_template("endscreen.html")
 
 
 # alles wat met het spelbord te maken heeft zit hier
