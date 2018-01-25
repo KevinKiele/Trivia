@@ -429,10 +429,6 @@ def game():
         random.shuffle(questions[i])
         return render_template('game.html', q = questions_shuffled, o = questions)
 
-@app.route("/game")
-@login_required
-def game():
-    vraag = exc.execute()
 
 @app.route('/quiz', methods=['POST'])
 def quiz_answers():

@@ -73,7 +73,7 @@ def run_test(questions):
             print("False!\n")
     print("You answered %s out of 50 correctly!" %(score))
 
-run_test(Trivia_Algemeen)
+#run_test(Trivia_Algemeen)
 
 
 
