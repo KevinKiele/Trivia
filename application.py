@@ -113,6 +113,11 @@ def lobby1():
         if len(rows) == 1:
             return apology("Unable to Join")
 
+        # zorgt voor maximaal aantal spelers
+        max_players = db.execute("SELECT * FROM lobby1")
+        if len(max_players) == 2:
+            return apology("Lobby is Full")
+
         # puts players in sql // werkt niet
         join_lobby = db.execute("INSERT INTO lobby1 (id, lobbyname) VALUES(:id, :lobbyname)", id=session["user_id"], lobbyname="lobby1")
 
@@ -134,6 +139,11 @@ def lobby2():
         # puts players in sql
         join_lobby = db.execute("INSERT INTO lobby2 (id, lobbyname) VALUES(:id, :lobbyname)", id=session["user_id"], lobbyname="lobby2")
 
+        # zorgt voor maximaal aantal spelers
+        max_players = db.execute("SELECT * FROM lobby2")
+        if len(max_players) == 4:
+            return apology("Lobby is Full")
+
         return render_template("lobby2.html")
     else:
         return render_template("lobby2.html")
@@ -151,6 +161,11 @@ def lobby3():
 
         # puts players in sql // werkt niet
         join_lobby = db.execute("INSERT INTO lobby3 (id, lobbyname) VALUES(:id, :lobbyname)", id=session["user_id"], lobbyname="lobby3")
+
+        # zorgt voor maximaal aantal spelers
+        max_players = db.execute("SELECT * FROM lobby3")
+        if len(max_players) == 8:
+            return apology("Lobby is Full")
 
         return render_template("lobby3.html")
     else:
