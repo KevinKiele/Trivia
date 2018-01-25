@@ -105,10 +105,16 @@ def lobbyselection():
 @app.route("/lobby1", methods=["GET", "POST"])
 @login_required
 def lobby1():
-    if request.method == "POST":
+    # methode
+    if request.method == "GET":
+
+        # checkt of username al in database staat
+        rows = db.execute("SELECT * FROM lobby1 WHERE id = :id", id=session["user_id"])
+        if len(rows) == 1:
+            return apology("Unable to Join")
 
         # puts players in sql // werkt niet
-        join_lobby = db.execute("INSERT INTO lobby1 (id, lobbynaam) VALUES(:id, :lobbynaam", id=session["user_id"], lobbynaam="lobby1")
+        join_lobby = db.execute("INSERT INTO lobby1 (id, lobbyname) VALUES(:id, :lobbyname)", id=session["user_id"], lobbyname="lobby1")
 
         return render_template("lobby1.html")
     else:
@@ -117,12 +123,38 @@ def lobby1():
 @app.route("/lobby2", methods=["GET", "POST"])
 @login_required
 def lobby2():
-    return render_template("lobby2.html")
+    # methode
+    if request.method == "GET":
+
+        # checkt of username al in database staat
+        rows = db.execute("SELECT * FROM lobby2 WHERE id = :id", id=session["user_id"])
+        if len(rows) == 1:
+            return apology("Unable to Join")
+
+        # puts players in sql
+        join_lobby = db.execute("INSERT INTO lobby2 (id, lobbyname) VALUES(:id, :lobbyname)", id=session["user_id"], lobbyname="lobby2")
+
+        return render_template("lobby2.html")
+    else:
+        return render_template("lobby2.html")
 
 @app.route("/lobby3", methods=["GET", "POST"])
 @login_required
 def lobby3():
-    return render_template("lobby3.html")
+    # methode
+    if request.method == "GET":
+
+        # checkt of username al in database staat
+        rows = db.execute("SELECT * FROM lobby3 WHERE id = :id", id=session["user_id"])
+        if len(rows) == 1:
+            return apology("Unable to Join")
+
+        # puts players in sql // werkt niet
+        join_lobby = db.execute("INSERT INTO lobby3 (id, lobbyname) VALUES(:id, :lobbyname)", id=session["user_id"], lobbyname="lobby3")
+
+        return render_template("lobby3.html")
+    else:
+        return render_template("lobby3.html")
 
 @app.route("/myprofile", methods=["GET", "POST"])
 @login_required
