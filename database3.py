@@ -1,13 +1,13 @@
 import urllib.request
 import json
-import random, copy
 
 # alleen vragen met 4 antwoorden kunnen --> in mijn dict is het 4de antworode altijd de juiste, en dit wordt ook gelezen in application.py
 #history
-#1= algemeen, 2 = geschiedenis, 3 =
+#1= algemeen, 2 = geschiedenis, 3 = sport
 urllijst = ["https://opentdb.com/api.php?amount=50&category=9&type=multiple", 'https://opentdb.com/api.php?amount=50&category=23&type=multiple', 'https://opentdb.com/api.php?amount=50&category=21&type=multiple']
 
-url = 'https://opentdb.com/api.php?amount=50&category=23&type=multiple'
+# 1 = algemeen
+url = 'https://opentdb.com/api.php?amount=50&category=21&type=multiple'
 req = urllib.request.Request(url)
 
 # url lezen en decoden voor gebruik
@@ -16,7 +16,7 @@ cont = json.loads(r.decode('utf-8'))
 counter = 0
 
 # lijsten en dict aanmaken
-Trivia_Algemeen = {}
+Trivia_Sport = {}
 goed = []
 fout = []
 antwoorden = []
@@ -46,35 +46,5 @@ while counter <50:
 # create dict with questions and answers
 counter = 0
 while counter <50:
-    Trivia_Algemeen[vragen[counter]] = antwoorden[counter]
+    Trivia_Sport[vragen[counter]] = antwoorden[counter]
     counter += 1
-
-
-# shuffle de vragen
-shuffled_Trivia_Algemeen = []
-def shuffle(questions):
-    for key, value in questions.items():
-        random.shuffle(value)
-        shuffled_Trivia_Algemeen.append(value)
-    return shuffled_Trivia_Algemeen
-
-#shuffle(Trivia_Algemeen)
-
-## Speel het spel
-def run_test(questions):
-    score = 0
-    for q, a in questions.items():
-        #"print(q, "\n", a, "\n")
-        answer = input("Your answer: ")
-        if answer == a[3]:
-            score +=1
-            print("Correct!\n")
-        else:
-            print("False!\n")
-    print("You answered %s out of 50 correctly!" %(score))
-
-run_test(Trivia_Algemeen)
-
-
-
-

@@ -5,6 +5,8 @@ from passlib.apps import custom_app_context as pwd_context
 from tempfile import mkdtemp
 import random, copy
 import database
+import database2
+import database3
 
 from helpers import *
 #testcomment
@@ -296,9 +298,9 @@ def register():
 # Alles dat te maken heeft met de quize game zit hieronder
 
 # De dataset importeren
-original_questions = database.Trivia
-
+original_questions = database.Trivia_Algemeen
 questions = copy.deepcopy(original_questions)
+
 
 # schuffle de vragen zodat het juiste antwoord niet altijd achterin staat
 def shuffle(q):
@@ -320,6 +322,11 @@ def game():
         random.shuffle(questions[i])
         return render_template('game.html', q = questions_shuffled, o = questions)
 
+@app.route("/game")
+@login_required
+def game():
+    vraag = exc.execute()
+
 @app.route('/quiz', methods=['POST'])
 def quiz_answers():
     correct = 0
@@ -329,26 +336,13 @@ def quiz_answers():
         correct += 1
     return render_template("endscreen.html", q = score)
 
-
+# waar het resultaat uiteindelijk komt
 @app.route("/endscreen", methods=["GET", "POST"])
 @login_required
 def endscreen():
     return render_template("endscreen.html")
 
-
-
-#
-#@app.route('/quiz', methods=['POST'])
-#def quiz_answers():
- #   correct = 0
- #   for i in questions.keys():
- #       answered = request.form[i]
- #   if original_questions[i][0] == answered:
- #       correct = correct+1
- #   return '<h1>Correct Answers: <u>'+str(correct)+'</u></h1>'
-
-
-# alles wat met het spelbord te maken heeft zit hier
+# spelbord gerelateerde codes hieronder
 
 @app.route("/spelbordtest", methods=["GET", "POST"])
 def spelbordtest():
