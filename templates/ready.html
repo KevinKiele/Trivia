@@ -5,9 +5,10 @@
 {% endblock %}
 
 {% block main %}
-    <form action="{{ url_for('ready') }}" method="get">
+<form action='/ready' method='POST'>
         <fieldset>
             <h1>Congratulations, YOU ARE READY</h1>
+            <h2>Waiting for other players...</h2>
         </fieldset>
-    </form>
+</form>
 {% endblock %}
