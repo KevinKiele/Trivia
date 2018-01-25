@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Ready
+{% endblock %}
+
+{% block main %}
+    <form action="{{ url_for('ready') }}" method="get">
+        <fieldset>
+            <h1>Congratulations, YOU ARE READY</h1>
+        </fieldset>
+    </form>
+{% endblock %}

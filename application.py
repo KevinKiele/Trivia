@@ -107,7 +107,6 @@ def lobbyselection():
 def lobby1():
     # methode
     if request.method == "GET":
-
         # checkt of username al in database staat
         rows = db.execute("SELECT * FROM lobby1 WHERE id = :id", id=session["user_id"])
         if len(rows) == 1:
@@ -119,11 +118,10 @@ def lobby1():
             return apology("Lobby is Full")
 
         # puts players in sql // werkt niet
-        join_lobby = db.execute("INSERT INTO lobby1 (id, lobbyname) VALUES(:id, :lobbyname)", id=session["user_id"], lobbyname="lobby1")
-
+        join_lobby = db.execute("INSERT INTO lobby1 (id, lobbyname, ready) VALUES(:id, :lobbyname, :ready)", id=session["user_id"], lobbyname="lobby1", ready="no")
         return render_template("lobby1.html")
     else:
-        return render_template("lobby1.html")
+        return redirect(url_for("ready"))
 
 @app.route("/lobby2", methods=["GET", "POST"])
 @login_required
@@ -170,6 +168,21 @@ def lobby3():
         return render_template("lobby3.html")
     else:
         return render_template("lobby3.html")
+
+@app.route("/ready", methods=["GET", "POST"])
+@login_required
+def ready():
+    # hier ben ik gebleven // verander methode naar post?
+    if request.method == "GET":
+
+        # zet ready van user op yes
+        ready = db.execute("UPDATE lobby1 SET ready = :ready WHERE id = :id", ready="yes", id=session["user_id"])
+        # checkt of alle values op yes staan
+        everyone_ready = db.execute("SELECT * FROM lobby1 WHERE ready = :ready", ready="yes")
+        if len(everyone_ready) == 2:
+            return render_template("ready.html")
+    else:
+        return render_template("ready.html")
 
 @app.route("/myprofile", methods=["GET", "POST"])
 @login_required
@@ -278,27 +291,6 @@ def register():
 
     else:
         return render_template("register.html")
-
-@app.route("/joinlobby1", methods=["GET", "POST"])
-@login_required
-def joinlobby1():
-    return render_template("lobby1.html")
-
-@app.route("/joinlobby2", methods=["GET", "POST"])
-@login_required
-def joinlobby2():
-    return render_template("lobby2.html")
-
-@app.route("/joinlobby3", methods=["GET", "POST"])
-@login_required
-def joinlobby3():
-
-    if request.method == "POST":
-        return render_template("lobby3.html")
-
-
-    else:
-        return render_template("lobby3.html")
 
 
 # Alles dat te maken heeft met de quize game zit hieronder
