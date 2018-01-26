@@ -15,6 +15,7 @@ r = urllib.request.urlopen(req).read()
 cont = json.loads(r.decode('utf-8'))
 counter = 0
 
+
 # lijsten en dict aanmaken
 Trivia_Algemeen = {}
 goed = []
@@ -58,13 +59,11 @@ def shuffle(questions):
         shuffled_Trivia_Algemeen.append(value)
     return shuffled_Trivia_Algemeen
 
-#shuffle(Trivia_Algemeen)
-
 ## Speel het spel
 def run_test(questions):
     score = 0
     for q, a in questions.items():
-        #"print(q, "\n", a, "\n")
+        print(q, "\n", a, "\n")
         answer = input("Your answer: ")
         if answer == a[3]:
             score +=1
@@ -74,7 +73,21 @@ def run_test(questions):
     print("You answered %s out of 50 correctly!" %(score))
 
 #run_test(Trivia_Algemeen)
+javaquiz = []
+for q, a in Trivia_Algemeen.items():
+    javaquiz.append(q)
+    javaquiz.append(a)
+    javaquiz.append(a[3])
 
+
+
+#count = 0
+#for i in javaquiz:
+#    count += 1
+#    print(i)
+#    if count == 3:
+#        print("\n")
+#        count = 0
 
 
 

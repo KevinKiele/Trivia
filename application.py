@@ -445,6 +445,12 @@ def quiz_answers():
 def endscreen():
     return render_template("endscreen.html")
 
+@app.route("/dequiz")
+@login_required
+def dequiz():
+    return render_template("dequiz.html")
+
+
 # spelbord gerelateerde codes hieronder
 
 @app.route("/spelbordtest", methods=["GET", "POST"])

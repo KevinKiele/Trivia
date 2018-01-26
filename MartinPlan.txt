@@ -26,3 +26,5 @@ speler ziet nieuwe vraag verschijnen(pagina reload?)
 
 ------------
 Data base werkt --> 1 voor 1 vragen er uit halen en direct checken of het goed is, is de volgende stap
+
+
