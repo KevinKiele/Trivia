@@ -99,10 +99,40 @@ def aboutus():
 
     return render_template("aboutus.html")
 
+@app.route("/removefromdatabase", methods=["GET", "POST"])
+@login_required
+def removefromdatabase():
+    if request.method == "GET":
+        db.execute("SELECT * FROM lobby1 WHERE id = :id", id=session["user_id"])
+        db.execute("DELETE FROM lobby1 WHERE id = :id", id=session["user_id"])
+        return render_template("lobbyselection.html")
+    else:
+        return apologyy("Test")
+
+@app.route("/removefromdatabase2", methods=["GET", "POST"])
+@login_required
+def removefromdatabase2():
+    if request.method == "GET":
+        db.execute("SELECT * FROM lobby2 WHERE id = :id", id=session["user_id"])
+        db.execute("DELETE FROM lobby2 WHERE id = :id", id=session["user_id"])
+        return render_template("lobbyselection.html")
+    else:
+        return apologyy("Test")
+
+@app.route("/removefromdatabase3", methods=["GET", "POST"])
+@login_required
+def removefromdatabase3():
+    if request.method == "GET":
+        db.execute("SELECT * FROM lobby3 WHERE id = :id", id=session["user_id"])
+        db.execute("DELETE FROM lobby3 WHERE id = :id", id=session["user_id"])
+        return render_template("lobbyselection.html")
+    else:
+        return apologyy("Test")
+
 @app.route("/lobbyselection", methods=["GET", "POST"])
 @login_required
 def lobbyselection():
-    return render_template("lobbyselection.html")
+        return render_template("lobbyselection.html")
 
 @app.route("/lobby1", methods=["GET", "POST"])
 @login_required
