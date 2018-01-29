@@ -59,7 +59,7 @@ def shuffle(questions):
         shuffled_Trivia_Algemeen.append(value)
     return shuffled_Trivia_Algemeen
 
-## Speel het spel
+## Speel het spel als test
 def run_test(questions):
     score = 0
     for q, a in questions.items():
@@ -73,21 +73,10 @@ def run_test(questions):
     print("You answered %s out of 50 correctly!" %(score))
 
 #run_test(Trivia_Algemeen)
-javaquiz = []
-for q, a in Trivia_Algemeen.items():
-    javaquiz.append(q)
-    javaquiz.append(a)
-    javaquiz.append(a[3])
 
 
-
-#count = 0
-#for i in javaquiz:
-#    count += 1
-#    print(i)
-#    if count == 3:
-#        print("\n")
-#        count = 0
-
+# print precies wat ik wil zodat ik het in java kan gebruiken
+for q, v in Trivia_Algemeen.items():
+    print('new Question("{}", {}, "{}"),'.format(q, v, v[3]))
 
 
