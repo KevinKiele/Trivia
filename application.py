@@ -35,8 +35,8 @@ db = SQL("sqlite:///trivia.db")
 @app.route("/")
 @login_required
 def index():
-
-    return apology("TODO")
+    # voorkomt error na afsluiten en opnieuw opstarten na login // weet verder niet hoe je dit oplost
+    return render_template("preloginhomepage.html")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -140,17 +140,17 @@ def lobby1():
     # methode
     if request.method == "GET":
         # checkt of username al in database staat
-        rows = db.execute("SELECT * FROM lobby1 WHERE id = :id", id=session["user_id"])
+        rows = db.execute("SELECT * FROM lobby WHERE id = :id", id=session["user_id"])
         if len(rows) == 1:
             return apology("Unable to Join")
 
         # zorgt voor maximaal aantal spelers
-        max_players = db.execute("SELECT * FROM lobby1")
+        max_players = db.execute("SELECT * FROM lobby")
         if len(max_players) == 2:
             return apology("Lobby is Full")
 
-        # puts players in sql // werkt niet
-        join_lobby = db.execute("INSERT INTO lobby1 (id, lobbyname, ready) VALUES(:id, :lobbyname, :ready)", id=session["user_id"], lobbyname="lobby1", ready="no")
+        # puts players in sql
+        join_lobby = db.execute("INSERT INTO lobby (id, category, ready) VALUES(:id, :category, :ready)", id=session["user_id"], category="The White House", ready="no")
         return render_template("lobby1.html")
 
     else:
