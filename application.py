@@ -475,7 +475,7 @@ def quiz_answers():
 def endscreen():
     return render_template("endscreen.html")
 
-# de drie mogelijke quize pagina's hieronder
+# de drie mogelijke quiz pagina's hieronder
 # Algemeen
 @app.route("/Algemeen")
 @login_required
@@ -493,13 +493,5 @@ def Geschiedenis():
 @login_required
 def Sport():
     return render_template("Sport.html")
-
-
-# spelbord gerelateerde codes hieronder
-
-@app.route("/spelbordtest", methods=["GET", "POST"])
-def spelbordtest():
-    return render_template("spelbordtest.html")
-
 
 
