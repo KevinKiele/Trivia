@@ -475,10 +475,24 @@ def quiz_answers():
 def endscreen():
     return render_template("endscreen.html")
 
-@app.route("/dequiz")
+# de drie mogelijke quize pagina's hieronder
+# Algemeen
+@app.route("/Algemeen")
 @login_required
-def dequiz():
-    return render_template("dequiz.html")
+def Algemeen():
+    return render_template("Algemeen.html")
+
+#geschiedenis
+@app.route("/Geschiedenis")
+@login_required
+def Geschiedenis():
+    return render_template("Geschiedenis.html")
+
+#geschiedenis
+@app.route("/Sport")
+@login_required
+def Sport():
+    return render_template("Sport.html")
 
 
 # spelbord gerelateerde codes hieronder

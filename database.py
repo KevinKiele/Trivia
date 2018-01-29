@@ -7,7 +7,7 @@ import random, copy
 #1= algemeen, 2 = geschiedenis, 3 =
 urllijst = ["https://opentdb.com/api.php?amount=50&category=9&type=multiple", 'https://opentdb.com/api.php?amount=50&category=23&type=multiple', 'https://opentdb.com/api.php?amount=50&category=21&type=multiple']
 
-url = 'https://opentdb.com/api.php?amount=50&category=23&type=multiple'
+url = 'https://opentdb.com/api.php?amount=50&category=9&type=multiple'
 req = urllib.request.Request(url)
 
 # url lezen en decoden voor gebruik
@@ -74,9 +74,12 @@ def run_test(questions):
 
 #run_test(Trivia_Algemeen)
 
+# Uitleg waarom onderstaande code in hastag staat
+# Deze code heb ik gebruikt om de api precies te printen zoals ik ze wil krijgen, dit lukte mij niet in een lijst te krijgen
+# de output hiervan kopieer ik en gebruik ik dan in de geschikte app_catogorie(Algemeeen, Sport, Geschiedenis)
 
-# print precies wat ik wil zodat ik het in java kan gebruiken
-for q, v in Trivia_Algemeen.items():
-    print('new Question("{}", {}, "{}"),'.format(q, v, v[3]))
+# gewilde format van vragen printen
+#for q, v in Trivia_Algemeen.items():
+#    print('new Question("{}", {}, "{}"),'.format(q, v, v[3]))
 
 

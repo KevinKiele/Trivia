@@ -48,3 +48,12 @@ counter = 0
 while counter <50:
     Trivia_Geschiedenis[vragen[counter]] = antwoorden[counter]
     counter += 1
+
+
+# Uitleg waarom onderstaande code in hastag staat
+# Deze code heb ik gebruikt om de api precies te printen zoals ik ze wil krijgen, dit lukte mij niet in een lijst te krijgen
+# de output hiervan kopieer ik en gebruik ik dan in de geschikte app_catogorie(Algemeeen, Sport, Geschiedenis)
+
+# gewilde format van vragen printen
+#for q, v in Trivia_Geschiedenis.items():
+#    print('new Question("{}", {}, "{}"),'.format(q, v, v[3]))
