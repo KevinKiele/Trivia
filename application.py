@@ -99,35 +99,6 @@ def aboutus():
 
     return render_template("aboutus.html")
 
-@app.route("/removefromdatabase", methods=["GET", "POST"])
-@login_required
-def removefromdatabase():
-    if request.method == "GET":
-        db.execute("SELECT * FROM lobby1 WHERE id = :id", id=session["user_id"])
-        db.execute("DELETE FROM lobby1 WHERE id = :id", id=session["user_id"])
-        return render_template("lobbyselection.html")
-    else:
-        return apologyy("Test")
-
-@app.route("/removefromdatabase2", methods=["GET", "POST"])
-@login_required
-def removefromdatabase2():
-    if request.method == "GET":
-        db.execute("SELECT * FROM lobby2 WHERE id = :id", id=session["user_id"])
-        db.execute("DELETE FROM lobby2 WHERE id = :id", id=session["user_id"])
-        return render_template("lobbyselection.html")
-    else:
-        return apologyy("Test")
-
-@app.route("/removefromdatabase3", methods=["GET", "POST"])
-@login_required
-def removefromdatabase3():
-    if request.method == "GET":
-        db.execute("SELECT * FROM lobby3 WHERE id = :id", id=session["user_id"])
-        db.execute("DELETE FROM lobby3 WHERE id = :id", id=session["user_id"])
-        return render_template("lobbyselection.html")
-    else:
-        return apologyy("Test")
 
 @app.route("/lobbyselection", methods=["GET", "POST"])
 @login_required
@@ -165,16 +136,16 @@ def lobby1():
             return apology("Unable to Join")
 
         # puts players in sql
-        join_lobby = db.execute("INSERT INTO lobby1 (id, category, ready) VALUES(:id, :category, :ready)", id=session["user_id"], category="General", ready="no")
+        join_lobby = db.execute("INSERT INTO lobby1 (id, category, ready, leave) VALUES(:id, :category, :ready, :leave)", id=session["user_id"], category="General", ready="yes", leave="no")
 
         # zorgt voor maximaal aantal spelers
         max_players = db.execute("SELECT * FROM lobby1")
-        if len(max_players) == 1:
-            db.execute("DELETE FROM lobby1 WHERE id = :id", id=session["user_id"])
-            return render_template("Algemeen.html")
+        if len(max_players) == 2:
+            # db.execute("DELETE FROM lobby1")
+            return render_template("ready.html")
 
 
-        return render_template("lobby1.html")
+        return render_template("ready.html")
 
     else:
         return redirect(url_for("ready"))
@@ -191,17 +162,18 @@ def lobby2():
             return apology("Unable to Join")
 
         # puts players in sql
-        join_lobby = db.execute("INSERT INTO lobby2 (id, category, ready) VALUES(:id, :category, :ready)", id=session["user_id"], category="Sport", ready="no")
+        join_lobby = db.execute("INSERT INTO lobby2 (id, category, ready, leave) VALUES(:id, :category, :ready, :leave)", id=session["user_id"], category="Sport", ready="yes", leave="no")
 
         # zorgt voor maximaal aantal spelers
         max_players = db.execute("SELECT * FROM lobby2")
         if len(max_players) == 2:
-            db.execute("DELETE FROM lobby2")
-            return render_template("Sport.html")
+            # db.execute("DELETE FROM lobby2")
+            return render_template("ready.html")
 
-        return render_template("lobby2.html")
+        return render_template("ready.html")
+
     else:
-        return render_template("lobby2.html")
+        return redirect(url_for("ready"))
 
 @app.route("/lobby3", methods=["GET", "POST"])
 @login_required
@@ -215,51 +187,41 @@ def lobby3():
             return apology("Unable to Join")
 
         # puts players in sql // werkt niet
-        join_lobby = db.execute("INSERT INTO lobby3 (id, category, ready) VALUES(:id,  :category, :ready)", id=session["user_id"], category="History", ready="no")
+        join_lobby = db.execute("INSERT INTO lobby3 (id, category, ready, leave) VALUES(:id,  :category, :ready, :leave)", id=session["user_id"], category="History", ready="yes", leave="no")
 
         # zorgt voor maximaal aantal spelers
         max_players = db.execute("SELECT * FROM lobby3")
-        if len(max_players) == 8:
-            return apology("Lobby is Full")
+        if len(max_players) == 2:
+            return render_template("ready.html")
 
-        return render_template("lobby3.html")
+        return render_template("ready.html")
+
     else:
-        return render_template("lobby3.html")
+        return redirect(url_for("ready"))
 
-
-@app.route("/returnlobby1", methods=["GET", "POST"])
+@app.route("/returnlobby", methods=["GET", "POST"])
 @login_required
-def returnlobby1():
+def returnlobby():
 
     if request.method == "GET":
 
-        check = db.execute("SELECT * FROM lobby1 WHERE id = :id", id=session["user_id"])
-        not_ready = db.execute("UPDATE lobby1 SET ready = :ready WHERE id = :id", ready="no", id=session["user_id"])
-        return render_template("lobby1.html")
-    else:
-        return render_template("homepage")
+        # kijkt max aantal players voor lobby1
+        lobby1 = db.execute("SELECT * FROM lobby1 WHERE id = :id", id=session["user_id"])
+        lobby2 = db.execute("SELECT * FROM lobby2 WHERE id = :id", id=session["user_id"])
+        lobby3 = db.execute("SELECT * FROM lobby3 WHERE id = :id", id=session["user_id"])
+        if len(lobby1) == 1:
+            db.execute("DELETE FROM lobby1 WHERE id = :id", id=session["user_id"])
+            return render_template("lobbyselection.html")
 
-@app.route("/returnlobby2", methods=["GET", "POST"])
-@login_required
-def returnlobby2():
+        elif len(lobby2) == 1:
+            db.execute("DELETE FROM lobby2 WHERE id = :id", id=session["user_id"])
+            return render_template("lobbyselection.html")
 
-    if request.method == "GET":
-
-        check = db.execute("SELECT * FROM lobby2 WHERE id = :id", id=session["user_id"])
-        not_ready = db.execute("UPDATE lobby2 SET ready = :ready WHERE id = :id", ready="no", id=session["user_id"])
-        return render_template("lobby2.html")
-    else:
-        return render_template("homepage")
-
-@app.route("/returnlobby3", methods=["GET", "POST"])
-@login_required
-def returnlobby3():
-
-    if request.method == "GET":
-
-        check = db.execute("SELECT * FROM lobby3 WHERE id = :id", id=session["user_id"])
-        not_ready = db.execute("UPDATE lobby3 SET ready = :ready WHERE id = :id", ready="no", id=session["user_id"])
-        return render_template("lobby3.html")
+        elif len(lobby3) == 1:
+            db.execute("DELETE FROM lobby3 WHERE id = :id", id=session["user_id"])
+            return render_template("lobbyselection.html")
+        # check = db.execute("SELECT * FROM lobby1 WHERE id = :id", id=session["user_id"])
+        # not_ready = db.execute("UPDATE lobby1 SET ready = :ready WHERE id = :id", ready="no", id=session["user_id"])
     else:
         return render_template("homepage")
 
@@ -269,36 +231,25 @@ def returnlobby3():
 def check():
     if request.method =="GET":
         # kijkt of iedereen ready is
-        everyone_ready = db.execute("SELECT * FROM lobby1 WHERE ready = :ready", ready="yes")
-        if len(everyone_ready) == 2:
-            return redirect(url_for("game"))
+        lobby1 = db.execute("SELECT * FROM lobby1 WHERE ready = :ready", ready="yes")
+        lobby2 = db.execute("SELECT * FROM lobby2 WHERE ready = :ready", ready="yes")
+        lobby3 = db.execute("SELECT * FROM lobby3 WHERE ready = :ready", ready="yes")
+        # max amount of games at the same time = 3.
+        if len(lobby1) == 2 or len(lobby1) == 4 or len(lobby1) == 6:
+            db.execute("UPDATE lobby1 SET leave = :leave WHERE id = :id", leave="yes", id=session["user_id"])
+            return render_template("Algemeen.html")
+
+        elif len(lobby2) == 2 or len(lobby2) == 4 or len(lobby2) == 6:
+            db.execute("UPDATE lobby2 SET leave = :leave WHERE id = :id", leave="yes", id=session["user_id"])
+            return render_template("Sport.html")
+
+        elif len(lobby3) == 2 or len(lobby3) == 4 or len(lobby3) == 6:
+            db.execute("UPDATE lobby3 SET leave = :leave WHERE id = :id", leave="yes", id=session["user_id"])
+            return render_template("Geschiedenis.html")
 
         else:
             return apology1("All players need to be ready to start the game")
 
-@app.route("/check2", methods=["GET", "POST"])
-@login_required
-def check2():
-    if request.method =="GET":
-        # kijkt of iedereen ready is
-        everyone_ready = db.execute("SELECT * FROM lobby2 WHERE ready = :ready", ready="yes")
-        if len(everyone_ready) == 2:
-            return redirect(url_for("game"))
-
-        else:
-            return apology1("All players need to be ready to start the game")
-
-@app.route("/check3", methods=["GET", "POST"])
-@login_required
-def check3():
-    if request.method =="GET":
-        # kijkt of iedereen ready is
-        everyone_ready = db.execute("SELECT * FROM lobby3 WHERE ready = :ready", ready="yes")
-        if len(everyone_ready) == 2:
-            return redirect(url_for("game"))
-
-        else:
-            return apology1("All players need to be ready to start the game")
 
 @app.route("/ready", methods=["GET", "POST"])
 @login_required
@@ -312,37 +263,6 @@ def ready():
         # zorgt ervoor dat gecheckt wordt of iedereen ready is
         if len(everyone_ready) == 1:
             return render_template("ready.html")
-    else:
-        return apology("Test")
-
-
-@app.route("/ready2", methods=["GET", "POST"])
-@login_required
-def ready2():
-    # methode
-    if request.method == "GET":
-        # zet ready van user op yes
-        ready = db.execute("UPDATE lobby2 SET ready = :ready WHERE id = :id", ready="yes", id=session["user_id"])
-        # checkt of alle values op yes staan
-        everyone_ready = db.execute("SELECT * FROM lobby2 WHERE ready = :ready", ready="yes")
-        # zorgt ervoor dat gecheckt wordt of iedereen ready is
-        if len(everyone_ready) == 1:
-            return render_template("ready2.html")
-    else:
-        return apology("Test")
-
-@app.route("/ready3", methods=["GET", "POST"])
-@login_required
-def ready3():
-    # methode
-    if request.method == "GET":
-        # zet ready van user op yes
-        ready = db.execute("UPDATE lobby3 SET ready = :ready WHERE id = :id", ready="yes", id=session["user_id"])
-        # checkt of alle values op yes staan
-        everyone_ready = db.execute("SELECT * FROM lobby3 WHERE ready = :ready", ready="yes")
-        # zorgt ervoor dat gecheckt wordt of iedereen ready is
-        if len(everyone_ready) == 1:
-            return render_template("ready3.html")
     else:
         return apology("Test")
 
