@@ -26,13 +26,13 @@ Contact: ---
 <div>
     </br>
 {% if session.user_id %}
-        <a href="lobbyselection" class="btn btn-info" role="button">PLAY NOW</a>
-        <a href="information" class="btn btn-info" role="button">RULES</a>
+        <a href="lobbyselection" class="btn btn-primary" role="button">PLAY NOW</a>
+        <a href="information" class="btn btn-primary" role="button">RULES</a>
 {% endif %}
 {% if not session.user_id %}
-        <a href="information" class="btn btn-info" role="button">RULES</a>
-        <a href="register" class="btn btn-info" role="button">REGISTER</a>
-        <a href="login" class="btn btn-info" role="button">LOGIN</a>
+        <a href="information" class="btn btn-primary" role="button">RULES</a>
+        <a href="register" class="btn btn-primary" role="button">REGISTER</a>
+        <a href="login" class="btn btn-primary" role="button">LOGIN</a>
 {% endif %}
 </div>
 {% endblock %}

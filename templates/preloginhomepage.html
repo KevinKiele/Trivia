@@ -5,13 +5,12 @@
 {% endblock %}
 
 {% block main %}
-
-<h1 style="color: #009999;">
+<h1>
     Welcome to Locked Up
     </h1>
 <br>
 
-<p style=" color: #009999">
+<p>
 
 
 <div>
@@ -53,12 +52,12 @@ Peeping from the bushes, you overheard their conversation.
 <div>
     </br>
 {% if not session.user_id %}
-    <a href="register" class="btn btn-info" role="button">REGISTER NOW</a>
-    <a href="login" class="btn btn-info" role="button">LOGIN</a>
+    <a href="register" class="btn btn-primary" role="button">REGISTER NOW</a>
+    <a href="login" class="btn btn-primary" role="button">LOGIN</a>
     </div>
 {% endif %}
 {% if session.user_id %}
-    <a href="homepage" class="btn btn-info" role="button">PLAY THE GAME!</a>
-    <a href="aboutus" class="btn btn-info" role="button">ABOUT US!</a>
+    <a href="homepage" class="btn btn-primary" role="button">PLAY THE GAME!</a>
+    <a href="aboutus" class="btn btn-primary" role="button">ABOUT US!</a>
 {% endif %}
 {% endblock %}

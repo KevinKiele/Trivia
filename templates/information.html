@@ -27,13 +27,13 @@ Locked up is a trivia game. Discover the board to find the treasure before your 
 
 
 {% if session.user_id %}
-        <a href="game" class="btn btn-info" role="button">PLAY NOW</a>
-        <a href="aboutus" class="btn btn-info" role="button">ABOUT US</a>
+        <a href="game" class="btn btn-primary" role="button">PLAY NOW</a>
+        <a href="aboutus" class="btn btn-primary" role="button">ABOUT US</a>
 {% endif %}
 {% if not session.user_id %}
-        <a href="login" class="btn btn-info" role="button">LOGIN</a>
-        <a href="register" class="btn btn-info" role="button">REGISTER</a>
-        <a href="aboutus" class="btn btn-info" role="button">ABOUT US</a>
+        <a href="login" class="btn btn-primary" role="button">LOGIN</a>
+        <a href="register" class="btn btn-primary" role="button">REGISTER</a>
+        <a href="aboutus" class="btn btn-primary" role="button">ABOUT US</a>
 {% endif %}
 </div>
 {% endblock %}

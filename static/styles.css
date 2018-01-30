@@ -1,16 +1,16 @@
 .container
 {
-    /* center contents */
+    /* Alles centreren */
     text-align: center;
     font-family: Copperplate, "Copperplate Gothic Light", fantasy;
     font-size: 18px;
     color: white;
     text-shadow: -0.5px 0 black, 0 0.5px black, 0 -0.5px black;
 
-    /*coole shit */
+    /* achtergrond bewegende gradient */
     width: 100%;
-    height: ;
-    background: linear-gradient(135deg, #ec5218, #1665c1);
+    height: 1080px ;
+    background: linear-gradient(135deg, #00b09b, black, #96c93d);
     background-size: 400% 400%;
     animation: BackgroundGradient 30s ease infinite;
 }
