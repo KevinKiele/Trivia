@@ -38,9 +38,9 @@
                         {% endif %}
                         {% if session.user_id %}
                             <ul class="nav navbar-nav">
+                                <li><a href="{{ url_for('homepage') }}">Game Selection</a></li>
                                 <li><a href="{{ url_for('information') }}">Rules</a></li>
                                 <li><a href="{{ url_for('aboutus') }}">About Us</a></li>
-                                <!--GAME en MYPROFILE WEGGEHAALD, KAN EVT LATER WEER TERUG-->
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a href="{{ url_for('wachtwoordveranderen') }}">Change Password</a></li>
