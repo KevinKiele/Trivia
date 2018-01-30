@@ -99,35 +99,6 @@ def aboutus():
 
     return render_template("aboutus.html")
 
-@app.route("/removefromdatabase", methods=["GET", "POST"])
-@login_required
-def removefromdatabase():
-    if request.method == "GET":
-        db.execute("SELECT * FROM lobby1 WHERE id = :id", id=session["user_id"])
-        db.execute("DELETE FROM lobby1 WHERE id = :id", id=session["user_id"])
-        return render_template("lobbyselection.html")
-    else:
-        return apologyy("Test")
-
-@app.route("/removefromdatabase2", methods=["GET", "POST"])
-@login_required
-def removefromdatabase2():
-    if request.method == "GET":
-        db.execute("SELECT * FROM lobby2 WHERE id = :id", id=session["user_id"])
-        db.execute("DELETE FROM lobby2 WHERE id = :id", id=session["user_id"])
-        return render_template("lobbyselection.html")
-    else:
-        return apologyy("Test")
-
-@app.route("/removefromdatabase3", methods=["GET", "POST"])
-@login_required
-def removefromdatabase3():
-    if request.method == "GET":
-        db.execute("SELECT * FROM lobby3 WHERE id = :id", id=session["user_id"])
-        db.execute("DELETE FROM lobby3 WHERE id = :id", id=session["user_id"])
-        return render_template("lobbyselection.html")
-    else:
-        return apologyy("Test")
 
 @app.route("/lobbyselection", methods=["GET", "POST"])
 @login_required
@@ -279,29 +250,6 @@ def check():
         else:
             return apology1("All players need to be ready to start the game")
 
-@app.route("/check2", methods=["GET", "POST"])
-@login_required
-def check2():
-    if request.method =="GET":
-        # kijkt of iedereen ready is
-        everyone_ready = db.execute("SELECT * FROM lobby2 WHERE ready = :ready", ready="yes")
-        if len(everyone_ready) == 2:
-            return redirect(url_for("game"))
-
-        else:
-            return apology1("All players need to be ready to start the game")
-
-@app.route("/check3", methods=["GET", "POST"])
-@login_required
-def check3():
-    if request.method =="GET":
-        # kijkt of iedereen ready is
-        everyone_ready = db.execute("SELECT * FROM lobby3 WHERE ready = :ready", ready="yes")
-        if len(everyone_ready) == 2:
-            return redirect(url_for("game"))
-
-        else:
-            return apology1("All players need to be ready to start the game")
 
 @app.route("/ready", methods=["GET", "POST"])
 @login_required
@@ -315,37 +263,6 @@ def ready():
         # zorgt ervoor dat gecheckt wordt of iedereen ready is
         if len(everyone_ready) == 1:
             return render_template("ready.html")
-    else:
-        return apology("Test")
-
-
-@app.route("/ready2", methods=["GET", "POST"])
-@login_required
-def ready2():
-    # methode
-    if request.method == "GET":
-        # zet ready van user op yes
-        ready = db.execute("UPDATE lobby2 SET ready = :ready WHERE id = :id", ready="yes", id=session["user_id"])
-        # checkt of alle values op yes staan
-        everyone_ready = db.execute("SELECT * FROM lobby2 WHERE ready = :ready", ready="yes")
-        # zorgt ervoor dat gecheckt wordt of iedereen ready is
-        if len(everyone_ready) == 1:
-            return render_template("ready2.html")
-    else:
-        return apology("Test")
-
-@app.route("/ready3", methods=["GET", "POST"])
-@login_required
-def ready3():
-    # methode
-    if request.method == "GET":
-        # zet ready van user op yes
-        ready = db.execute("UPDATE lobby3 SET ready = :ready WHERE id = :id", ready="yes", id=session["user_id"])
-        # checkt of alle values op yes staan
-        everyone_ready = db.execute("SELECT * FROM lobby3 WHERE ready = :ready", ready="yes")
-        # zorgt ervoor dat gecheckt wordt of iedereen ready is
-        if len(everyone_ready) == 1:
-            return render_template("ready3.html")
     else:
         return apology("Test")
 
