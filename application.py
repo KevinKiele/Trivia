@@ -134,23 +134,46 @@ def removefromdatabase3():
 def lobbyselection():
         return render_template("lobbyselection.html")
 
+@app.route("/singleplayer", methods=["GET", "POST"])
+@login_required
+def singleplayer():
+        return render_template("singleplayer.html")
+
+@app.route("/solo1", methods=["GET", "POST"])
+@login_required
+def solo1():
+        return render_template("Algemeen.html")
+
+@app.route("/solo2", methods=["GET", "POST"])
+@login_required
+def solo2():
+        return render_template("Sport.html")
+
+@app.route("/solo3", methods=["GET", "POST"])
+@login_required
+def solo3():
+        return render_template("Geschiedenis.html")
+
 @app.route("/lobby1", methods=["GET", "POST"])
 @login_required
 def lobby1():
     # methode
     if request.method == "GET":
         # checkt of username al in database staat
-        rows = db.execute("SELECT * FROM lobby WHERE id = :id", id=session["user_id"])
+        rows = db.execute("SELECT * FROM lobby1 WHERE id = :id", id=session["user_id"])
         if len(rows) == 1:
             return apology("Unable to Join")
 
-        # zorgt voor maximaal aantal spelers
-        max_players = db.execute("SELECT * FROM lobby")
-        if len(max_players) == 2:
-            return apology("Lobby is Full")
-
         # puts players in sql
-        join_lobby = db.execute("INSERT INTO lobby (id, category, ready) VALUES(:id, :category, :ready)", id=session["user_id"], category="The White House", ready="no")
+        join_lobby = db.execute("INSERT INTO lobby1 (id, category, ready) VALUES(:id, :category, :ready)", id=session["user_id"], category="General", ready="no")
+
+        # zorgt voor maximaal aantal spelers
+        max_players = db.execute("SELECT * FROM lobby1")
+        if len(max_players) == 1:
+            db.execute("DELETE FROM lobby1 WHERE id = :id", id=session["user_id"])
+            return render_template("Algemeen.html")
+
+
         return render_template("lobby1.html")
 
     else:
@@ -168,12 +191,13 @@ def lobby2():
             return apology("Unable to Join")
 
         # puts players in sql
-        join_lobby = db.execute("INSERT INTO lobby2 (id, lobbyname) VALUES(:id, :lobbyname)", id=session["user_id"], lobbyname="lobby2")
+        join_lobby = db.execute("INSERT INTO lobby2 (id, category, ready) VALUES(:id, :category, :ready)", id=session["user_id"], category="Sport", ready="no")
 
         # zorgt voor maximaal aantal spelers
         max_players = db.execute("SELECT * FROM lobby2")
-        if len(max_players) == 4:
-            return apology("Lobby is Full")
+        if len(max_players) == 2:
+            db.execute("DELETE FROM lobby2")
+            return render_template("Sport.html")
 
         return render_template("lobby2.html")
     else:
@@ -191,7 +215,7 @@ def lobby3():
             return apology("Unable to Join")
 
         # puts players in sql // werkt niet
-        join_lobby = db.execute("INSERT INTO lobby3 (id, lobbyname) VALUES(:id, :lobbyname)", id=session["user_id"], lobbyname="lobby3")
+        join_lobby = db.execute("INSERT INTO lobby3 (id, category, ready) VALUES(:id,  :category, :ready)", id=session["user_id"], category="History", ready="no")
 
         # zorgt voor maximaal aantal spelers
         max_players = db.execute("SELECT * FROM lobby3")
