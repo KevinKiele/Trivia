@@ -12,7 +12,7 @@
     height: 1080px ;
     background: linear-gradient(135deg, #00b09b, black, #96c93d);
     background-size: 400% 400%;
-    animation: BackgroundGradient 30s ease infinite;
+    animation: BackgroundGradient 15s ease infinite;
 }
 
     @keyframes BackgroundGradient {
@@ -21,21 +21,10 @@
         100% {background-position: 0% 50%;}
     }
 /* colors for navbar */
-.navbar-default .navbar-brand .blue
-{
-    color: #11151c;
-}
-.navbar-default .navbar-brand .red
-{
-    color: #ea433b;
-}
-.navbar-default .navbar-brand .yellow
-{
-    color: #f5b82e;
-}
-.navbar-default .navbar-brand .green
-{
-    color: #2e944b;
+
+.container-fluid {
+    background-color: black;
+    color: white;
 }
 
 main .form-control

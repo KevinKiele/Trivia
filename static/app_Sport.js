@@ -36,7 +36,7 @@ function showProgress() {
 
 function showScores() {
     var gameOverHTML = "<h1>Result</h1>";
-    gameOverHTML += "<h2 id='score'> Your scores: " + quiz.score + "</h2>";
+    gameOverHTML += "<h2 id='score'> You answered " + quiz.score + " questions correctly! </h2>";
     gameOverHTML += "<h3>Thanks for playing and well done! If you'd like to fire up a new game, click Game Selection in the Navigation bar.</h>";
     var element = document.getElementById("quiz");
     element.innerHTML = gameOverHTML;
