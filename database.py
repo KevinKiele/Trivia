@@ -1,6 +1,7 @@
 import urllib.request
 import json
 import random, copy
+from random import shuffle
 
 # alleen vragen met 4 antwoorden kunnen --> in mijn dict is het 4de antworode altijd de juiste, en dit wordt ook gelezen in application.py
 #history
@@ -18,6 +19,7 @@ counter = 0
 
 # lijsten en dict aanmaken
 Trivia_Algemeen = {}
+Trivia_Algemeen_shuffle = {}
 goed = []
 fout = []
 antwoorden = []
@@ -50,36 +52,25 @@ while counter <50:
     Trivia_Algemeen[vragen[counter]] = antwoorden[counter]
     counter += 1
 
+# shuffle de antwoorden in een aparte lijst
+antwoorden_shuffle = copy.deepcopy(antwoorden)
 
-# shuffle de vragen
-shuffled_Trivia_Algemeen = []
-def shuffle(questions):
-    for key, value in questions.items():
-        random.shuffle(value)
-        shuffled_Trivia_Algemeen.append(value)
-    return shuffled_Trivia_Algemeen
+for antwoord in antwoorden_shuffle:
+    random.shuffle(antwoord)
 
-## Speel het spel als test
-def run_test(questions):
-    score = 0
-    for q, a in questions.items():
-        print(q, "\n", a, "\n")
-        answer = input("Your answer: ")
-        if answer == a[3]:
-            score +=1
-            print("Correct!\n")
-        else:
-            print("False!\n")
-    print("You answered %s out of 50 correctly!" %(score))
+# maak een dict aan met de geshuffelde vragen:
+counter = 0
+while counter <50:
+    Trivia_Algemeen_shuffle[vragen[counter]] = antwoorden_shuffle[counter]
+    counter += 1
 
-#run_test(Trivia_Algemeen)
 
 # Uitleg waarom onderstaande code in hastag staat
-# Deze code heb ik gebruikt om de api precies te printen zoals ik ze wil krijgen, dit lukte mij niet in een lijst te krijgen
+# Ik had geen manier gevonden op uit mijn database file gegevens te halen in java, mijn oplossing hiervoor is letterlijk printen uit
+# de database de vragen, geshuffelde antwoorden en het juiste antwoord meegeven
 # de output hiervan kopieer ik en gebruik ik dan in de geschikte app_catogorie(Algemeeen, Sport, Geschiedenis)
 
 # gewilde format van vragen printen
 #for q, v in Trivia_Algemeen.items():
-#    print('new Question("{}", {}, "{}"),'.format(q, v, v[3]))
-
-
+ #   v2 = Trivia_Algemeen_shuffle[q]
+  #  print('new Question("{}", {}, "{}"),'.format(q, v2, v[3]))

@@ -1,5 +1,7 @@
 import urllib.request
 import json
+import random, copy
+from random import shuffle
 
 # alleen vragen met 4 antwoorden kunnen --> in mijn dict is het 4de antworode altijd de juiste, en dit wordt ook gelezen in application.py
 #history
@@ -15,8 +17,10 @@ r = urllib.request.urlopen(req).read()
 cont = json.loads(r.decode('utf-8'))
 counter = 0
 
+
 # lijsten en dict aanmaken
 Trivia_Geschiedenis = {}
+Trivia_Geschiedenis_shuffle = {}
 goed = []
 fout = []
 antwoorden = []
@@ -49,11 +53,25 @@ while counter <50:
     Trivia_Geschiedenis[vragen[counter]] = antwoorden[counter]
     counter += 1
 
+# shuffle de antwoorden in een aparte lijst
+antwoorden_shuffle = copy.deepcopy(antwoorden)
+
+for antwoord in antwoorden_shuffle:
+    random.shuffle(antwoord)
+
+# maak een dict aan met de geshuffelde vragen:
+counter = 0
+while counter <50:
+    Trivia_Geschiedenis_shuffle[vragen[counter]] = antwoorden_shuffle[counter]
+    counter += 1
+
 
 # Uitleg waarom onderstaande code in hastag staat
-# Deze code heb ik gebruikt om de api precies te printen zoals ik ze wil krijgen, dit lukte mij niet in een lijst te krijgen
+# Ik had geen manier gevonden op uit mijn database file gegevens te halen in java, mijn oplossing hiervoor is letterlijk printen uit
+# de database de vragen, geshuffelde antwoorden en het juiste antwoord meegeven
 # de output hiervan kopieer ik en gebruik ik dan in de geschikte app_catogorie(Algemeeen, Sport, Geschiedenis)
 
 # gewilde format van vragen printen
 #for q, v in Trivia_Geschiedenis.items():
-#    print('new Question("{}", {}, "{}"),'.format(q, v, v[3]))
+#    v2 = Trivia_Geschiedenis_shuffle[q]
+#    print('new Question("{}", {}, "{}"),'.format(q, v2, v[3]))
