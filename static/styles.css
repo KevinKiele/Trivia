@@ -14,7 +14,7 @@
     background-size: 400% 400%;
     animation: BackgroundGradient 15s ease infinite;
 }
-
+/* achtergrond bewegende gradient met keyframes */
     @keyframes BackgroundGradient {
         0% {background-position: 0% 50%;}
         50% {background-position: 100% 50%;}
