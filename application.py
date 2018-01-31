@@ -145,6 +145,14 @@ def lobby1():
         if len(rows) == 1:
             return apology("Unable to Join")
 
+        # checkt of player al in andere lobbys zit
+        andere_lobby = db.execute("SELECT * FROM lobby2 WHERE id = :id", id=session["user_id"])
+        if len(andere_lobby) == 1:
+            return apology("You can't join two lobbys at the same time")
+        andere_lobby2 = db.execute("SELECT * FROM lobby3 WHERE id = :id", id=session["user_id"])
+        if len(andere_lobby2) == 1:
+            return apology("You can't join two lobbys at the same time")
+
         # puts players in sql
         join_lobby = db.execute("INSERT INTO lobby1 (id, category, ready, leave) VALUES(:id, :category, :ready, :leave)", id=session["user_id"], category="General", ready="yes", leave="no")
 
@@ -171,6 +179,14 @@ def lobby2():
         if len(rows) == 1:
             return apology("Unable to Join")
 
+        # checkt of player al in andere lobbys zit
+        andere_lobby = db.execute("SELECT * FROM lobby1 WHERE id = :id", id=session["user_id"])
+        if len(andere_lobby) == 1:
+            return apology("You can't join two lobbys at the same time")
+        andere_lobby2 = db.execute("SELECT * FROM lobby3 WHERE id = :id", id=session["user_id"])
+        if len(andere_lobby2) == 1:
+            return apology("You can't join two lobbys at the same time")
+
         # puts players in sql
         join_lobby = db.execute("INSERT INTO lobby2 (id, category, ready, leave) VALUES(:id, :category, :ready, :leave)", id=session["user_id"], category="Sport", ready="yes", leave="no")
 
@@ -195,6 +211,14 @@ def lobby3():
         rows = db.execute("SELECT * FROM lobby3 WHERE id = :id", id=session["user_id"])
         if len(rows) == 1:
             return apology("Unable to Join")
+
+        # checkt of player al in andere lobbys zit
+        andere_lobby = db.execute("SELECT * FROM lobby1 WHERE id = :id", id=session["user_id"])
+        if len(andere_lobby) == 1:
+            return apology("You can't join two lobbys at the same time")
+        andere_lobby2 = db.execute("SELECT * FROM lobby2 WHERE id = :id", id=session["user_id"])
+        if len(andere_lobby2) == 1:
+            return apology("You can't join two lobbys at the same time")
 
         # puts players in sql // werkt niet
         join_lobby = db.execute("INSERT INTO lobby3 (id, category, ready, leave) VALUES(:id,  :category, :ready, :leave)", id=session["user_id"], category="History", ready="yes", leave="no")
@@ -331,13 +355,7 @@ def wachtwoordveranderen():
 @login_required
 def homepage():
     """Homepagina."""
-
-    # methode
-    if request.method == "POST":
-
-        return render_template("homepage.html")
-    else:
-        return render_template("homepage.html")
+    return render_template("homepage.html")
 
 @app.route("/wachtwoordveranderd", methods=["GET", "POST"])
 @login_required
