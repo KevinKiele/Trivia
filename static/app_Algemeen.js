@@ -95,8 +95,11 @@ new Question("Earl Grey tea is black tea flavoured with what?", ['Bergamot oil',
 new Question("The website &quot;Shut Up &amp; Sit Down&quot; reviews which form of media?", ['Television Shows', 'Board Games', 'Video Games', 'Films'], "Board Games"),
 ];
 
+// kies 15 random vragen
+var Questions = questions.splice(Math.floor(Math.random()*questions.length),15);
+
 // create quiz
-var quiz = new Quiz(questions);
+var quiz = new Quiz(Questions);
 
 // display quiz
 populate();
