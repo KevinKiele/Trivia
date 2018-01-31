@@ -37,7 +37,7 @@ function showProgress() {
 function showScores() {
     var gameOverHTML = "<h1>Result</h1>";
     gameOverHTML += "<h2 id='score'> You answered " + quiz.score + " questions correctly! </h2>";
-    gameOverHTML += "<h3>Thanks for playing and well done! If you'd like to fire up a new game, click Game Selection in the Navigation bar.</h>";
+    gameOverHTML += "<h3 id='score'>Thanks for playing and well done! If you'd like to fire up a new game, click Game Selection in the Navigation bar.</h>";
     var element = document.getElementById("quiz");
     element.innerHTML = gameOverHTML;
 };
@@ -53,7 +53,7 @@ new Question("Which of these teams isn&#039;t a member of the NHL&#039;s &quot;O
 new Question("Who was the British professional wrestler Shirley Crabtree better known as?", ['Kendo Nagasaki', 'Masambula', 'Giant Haystacks', 'Big Daddy'], "Big Daddy"),
 new Question("What is the nickname of Northampton town&#039;s rugby union club?", ['Saints', 'Wasps', 'Saracens', 'Harlequins'], "Saints"),
 new Question("How many soccer players should be on the field at the same time?", ['26', '20', '24', '22'], "22"),
-new Question("Which team won the 2015-16 English Premier League?", ['Leicester City', 'Liverpool', 'Manchester United', 'Cheslea'], "Leicester City"),
+new Question("Which team won the 2015-16 English Premier League?", ['Leicester City', 'Liverpool', 'Manchester United', 'Chelsea'], "Leicester City"),
 new Question("A stimpmeter measures the speed of a ball over what surface?", ['Golf Putting Green', 'Cricket Outfield', 'Pinball Table', ' Football Pitch'], "Golf Putting Green"),
 new Question("Which Formula One driver was nicknamed &#039;The Professor&#039;?", ['Alain Prost', 'Niki Lauda', 'Emerson Fittipaldi', 'Ayrton Senna'], "Alain Prost"),
 new Question("How many scoring zones are there on a conventional dart board?", ['82', '42', '102', '62'], "82"),
