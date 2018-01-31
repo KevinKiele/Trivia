@@ -419,49 +419,6 @@ def register():
         return render_template("register.html")
 
 
-# Alles dat te maken heeft met de quize game zit hieronder
-
-# De dataset importeren
-original_questions = database.Trivia_Algemeen
-questions = copy.deepcopy(original_questions)
-
-
-# schuffle de vragen zodat het juiste antwoord niet altijd achterin staat
-def shuffle(q):
-    selected_keys = []
-    i = 0
-    while i < len(q):
-        current_selection = random.choice(list(q.keys()))
-        if current_selection not in selected_keys:
-            selected_keys.append(current_selection)
-            i += 1
-    return selected_keys
-
-#maak de quize aan op een pagina
-@app.route("/game")
-@login_required
-def game():
-    questions_shuffled = shuffle(questions)
-    for i in questions.keys():
-        random.shuffle(questions[i])
-        return render_template('game.html', q = questions_shuffled, o = questions)
-
-
-@app.route('/quiz', methods=['POST'])
-def quiz_answers():
-    correct = 0
-    for i in questions.keys():
-        answered = request.form[i]
-    if original_questions[i][3] == answered:
-        correct += 1
-    return render_template("endscreen.html", q = score)
-
-# waar het resultaat uiteindelijk komt
-@app.route("/endscreen", methods=["GET", "POST"])
-@login_required
-def endscreen():
-    return render_template("endscreen.html")
-
 # de drie mogelijke quiz pagina's hieronder
 # Algemeen
 @app.route("/Algemeen")
