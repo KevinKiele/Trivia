@@ -103,7 +103,13 @@ def aboutus():
 @app.route("/lobbyselection", methods=["GET", "POST"])
 @login_required
 def lobbyselection():
-        return render_template("lobbyselection.html")
+    amount_players = db.execute("SELECT * FROM lobby1")
+    amount_players = len(amount_players)
+    amount_players2 = db.execute("SELECT * FROM lobby2")
+    amount_players2 = len(amount_players2)
+    amount_players3 = db.execute("SELECT * FROM lobby3")
+    amount_players3 = len(amount_players3)
+    return render_template("lobbyselection.html", variable=amount_players, variable2=amount_players2, variable3=amount_players3)
 
 @app.route("/singleplayer", methods=["GET", "POST"])
 @login_required
@@ -248,7 +254,7 @@ def check():
             return render_template("Geschiedenis.html")
 
         else:
-            return apology1("All players need to be ready to start the game")
+            return apology1("Please wait for one more person to join the lobby")
 
 
 @app.route("/ready", methods=["GET", "POST"])
