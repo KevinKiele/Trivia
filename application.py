@@ -95,7 +95,7 @@ def preloginhomepage():
 @app.route("/leaderboard", methods={"GET", "POST"})
 def leaderboard():
     player_names = db.execute("SELECT username FROM users")
-    player_scores = db.execute("SELECT score FROM users")
+    player_scores = db.execute("SELECT points FROM users")
     # player_score = db.execute("SELECT score FROM users WHERE id = :id", id=session["user_id"])
 
     # for player_name in player_names:
