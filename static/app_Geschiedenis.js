@@ -93,6 +93,7 @@ new Question("Which of the following was not one of Joseph Stalin&#039;s ten blo
 new Question("The minigun was designed in 1960 by which manufacturer.", ['General Electric', 'Heckler &amp; Koch', 'Colt Firearms', 'Sig Sauer'], "General Electric"),
 new Question("Which country gifted the Statue of Liberty to the United States of America?", ['Germany', 'England', 'France', 'Spain'], "France"),
 new Question("On which aircraft carrier did the Doolitte Raid launch from on April 18, 1942 during World War II?", ['USS Saratoga', 'USS Enterprise', 'USS Lexington', 'USS Hornet'], "USS Hornet"),
+];
 
 // kies 15 random vragen
 var Questions = questions.splice(Math.floor(Math.random()*questions.length),15);
