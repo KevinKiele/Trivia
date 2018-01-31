@@ -5,16 +5,29 @@
 {% endblock %}
 
 {% block main %}
-<form action='/ready2' method='POST'>
+<form action='/ready' method='POST'>
         <fieldset>
-            <h1>Congratulations, YOU ARE READY</h1>
+            <h1>Welcome to Fenway Park!</h1>
+            </br>
+            <img src="https://i.imgur.com/LFNCe8x.jpg" alt="Fenway Park" style="width:400px;height:400px;">
+            </br>
+            </br>
+            <p>
+                Fenway Park is a baseball park located in Boston, Massachusetts at 4 Yawkey Way near Kenmore Square.
+                </br>
+                From 1912 untill the war, it was the home for the Boston Red Sox, the city's American League baseball team. It's the oldest ballpark in MLB.
+                </br>
+                </br>
+                This lobby is for Treasure Hunters specialised in Sports.
+            </p>
+            </br>
             <h2>Waiting for other players...</h2>
         </fieldset>
         <div class="form-group">
-            <a href="check2" class="btn btn-primary" role="button">Start Game</a><p>All players need to be ready to start the game</p>
+            <a href="check" class="btn btn-primary" role="button">Start Game</a><p>All players need to be ready to start the game</p>
         </div>
         <div class="form-group">
-            <a href="returnlobby2" class="btn btn-primary" role="button">Not Ready</a><p>Back to Lobby</p>
+            <a href="returnlobby" class="btn btn-primary" role="button">Not Ready</a><p>Back to Lobby</p>
         </div>
 </form>
 {% endblock %}

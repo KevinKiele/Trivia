@@ -7,14 +7,28 @@
 {% block main %}
 <form action='/ready' method='POST'>
         <fieldset>
-            <h1>Congratulations, YOU ARE READY</h1>
+            <h1>Welcome to The White House.</h1>
+            </br>
+            <img src="https://i.imgur.com/ZwVGShx.jpg" alt="The White House" style="width:400px;height:400px;">
+            </br>
+            </br>
+            <p>
+                The White House was the official residence and workplace of the President of the United States.
+                </br>
+                It is located in Washington, D.C., and has been the residence of every U.S. president since John Adams in 1800.
+                </br>
+                </br>
+                This lobby is for Treasure Hunters specialised in General Knowledge.
+            </p>
+            </br>
             <h2>Waiting for other players...</h2>
+            <div class="form-group">
+                <a href="check" class="btn btn-primary" role="button">Start Game</a><p>All players need to be ready to start the game</p>
+            </div>
+            <div class="form-group">
+                <a href="returnlobby" class="btn btn-primary" role="button">Not Ready</a><p>Back to Lobby</p>
+            </div>
         </fieldset>
-        <div class="form-group">
-            <a href="check" class="btn btn-primary" role="button">Start Game</a><p>All players need to be ready to start the game</p>
-        </div>
-        <div class="form-group">
-            <a href="returnlobby" class="btn btn-primary" role="button">Not Ready</a><p>Back to Lobby</p>
-        </div>
+
 </form>
 {% endblock %}

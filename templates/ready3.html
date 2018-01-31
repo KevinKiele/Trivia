@@ -5,16 +5,27 @@
 {% endblock %}
 
 {% block main %}
-<form action='/ready3' method='POST'>
+<form action='/ready' method='POST'>
         <fieldset>
-            <h1>Congratulations, YOU ARE READY</h1>
+            <h1>Welcome to the American Museum of Natural History</h1>
+            <img src="https://i.imgur.com/PgZFmnO.jpg" alt="American Museum of Natural History" style="width:400px;height:400px;">
+            <br>
+            The American Museum of Natural History, located on the Upper West Side of Manhattan, New York City. It's one of the largest museums in the world.
+            </br>
+            <br>
+            Located in Theodore Roosevelt Park across the street from Central Park, the museum complex comprises 28 interconnected buildings housing 45 permanent exhibition halls, in addition to a planetarium and a library.
+            The museum collections used to contain over 33 million specimens[5] of plants, animals, fossils, minerals, rocks, meteorites, human remains, and human cultural artifacts, of which only a small fraction can be displayed at any given time.
+            </br>
+            <br>
+            This lobby is for Treasure Hunters specialised in History.
+            </br>
             <h2>Waiting for other players...</h2>
         </fieldset>
         <div class="form-group">
-            <a href="check3" class="btn btn-primary" role="button">Start Game</a><p>All players need to be ready to start the game</p>
+            <a href="check" class="btn btn-primary" role="button">Start Game</a><p>All players need to be ready to start the game</p>
         </div>
         <div class="form-group">
-            <a href="returnlobby3" class="btn btn-primary" role="button">Not Ready</a><p>Back to Lobby</p>
+            <a href="returnlobby" class="btn btn-primary" role="button">Not Ready</a><p>Back to Lobby</p>
         </div>
 </form>
 {% endblock %}

@@ -95,8 +95,11 @@ new Question("What year was hockey legend Wayne Gretzky born?", ['1965', '1963',
 new Question("Which year was the third Super Bowl held?", ['1969', '1970', '1971', '1968'], "1969"),
 ];
 
+// kies 15 random vragen
+var Questions = questions.splice(Math.floor(Math.random()*questions.length),15);
+
 // create quiz
-var quiz = new Quiz(questions);
+var quiz = new Quiz(Questions);
 
 // display quiz
 populate();

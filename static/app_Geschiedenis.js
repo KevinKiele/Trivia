@@ -94,8 +94,11 @@ new Question("The minigun was designed in 1960 by which manufacturer.", ['Genera
 new Question("Which country gifted the Statue of Liberty to the United States of America?", ['Germany', 'England', 'France', 'Spain'], "France"),
 new Question("On which aircraft carrier did the Doolitte Raid launch from on April 18, 1942 during World War II?", ['USS Saratoga', 'USS Enterprise', 'USS Lexington', 'USS Hornet'], "USS Hornet"),
 
+// kies 15 random vragen
+var Questions = questions.splice(Math.floor(Math.random()*questions.length),15);
+
 // create quiz
-var quiz = new Quiz(questions);
+var quiz = new Quiz(Questions);
 
 // display quiz
 populate();
