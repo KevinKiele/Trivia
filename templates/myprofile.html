@@ -14,39 +14,39 @@
 <p style=" color: #009999">
 
 
-<div>
-We would like to welcome you to Trivia Board Game
-</div>
+{% extends "layout.html" %}
 
-<div>
-</br>
-And then ofcourse there's you...
-</div>
+{% block title %}
+    My Profile
+{% endblock %}
 
-<div>
-</br>
-You were living under a rock for the last few years without having the slightest clue about what was going on in the world.
-Convinced that you were the last survivor, doomed to wander the earth alone, you suddenly stumbled upon a group of Treasure Hunters.
-Peeping from the bushes, you overheard their conversation.
-</div>
+{% block main %}
 
-<div>
-</br>
-"Hey Kev, what's that vile stench? Did you let one slip, you filthy fuck?"
-<br />"Nah bruh, must be your upper lip."
-<div/>
-
-<br />The hunters started following their noses, leading them straight to you. (Which wasn't that hard.)
-
-<br />"Goddamn dude, you smell horrible! What happened to you?"
-
-<br />You started mumbling something about being the last survivor, your belly and a shower.
-<br />One of the Hunters started speaking such intellectual words that you feinted.
-<div>
-<br />Suddenly you woke up in front of some sort of futuristic looking clone of Albert Einstein.
-
-<br />"It's time to make a decision, Soldier, which coallition will it be?"
-</div>
-    </p>
-</div>
+<h1>
+    Your Profile
+    </h1>
+<br>
+<p>
+            <img src="http://www.peterveltman.nl/images/foto's%20van%20foto's/G%207%20zwerver%20amsterdam-noord.jpg" alt="You" style="width:245px;height:383px;">
+            </br>
+            </br>
+            <p>
+                <h1>Name: Treasure Hunter D'oh...</h1>
+                </br>
+                <h1>Age: You can't really remember.</h1>
+                </br>
+                <h1>Occupation: Definitely not a model.</h1>
+                </br>
+                <h1>Interests: Making tiny mud balls between your index finger and your thumb whilst having a smoke.</h1>
+                </br>
+                <h1>Future plans: *Cough* Being the smartest there ever was. *Cough* (Start working on it dude!)</h1>
+                </br>
+            </p>
+            </br>
+        </fieldset>
+        <div class="form-group">
+            <a href="homepage" class="btn btn-primary" role="button">Return</a>
+        </div>
+</form>
+{% endblock %}
 {% endblock %}
