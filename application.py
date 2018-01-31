@@ -90,8 +90,20 @@ def logout():
 
 @app.route("/preloginhomepage", methods={"GET", "POST"})
 def preloginhomepage():
-
     return render_template("preloginhomepage.html")
+
+@app.route("/leaderboard", methods={"GET", "POST"})
+def leaderboard():
+    player_names = db.execute("SELECT username FROM users"])
+    player_scores = db.execute("SELECT score FROM users")
+    # player_score = db.execute("SELECT score FROM users WHERE id = :id", id=session["user_id"])
+
+    # for player_name in player_names:
+    #     naam = player_name["username"]
+    #     score = player_name["score"]
+
+
+    return render_template("leaderboard.html", namen=player_names, scores=player_scores)
 
 @app.route("/information", methods={"GET", "POST"})
 def information():
