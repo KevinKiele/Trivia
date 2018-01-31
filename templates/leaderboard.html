@@ -1,19 +1,17 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Apology
+    Leaderboard
 {% endblock %}
 
 {% block main %}
     <table class="table table-striped" style="width:100%">
       <tr>
-        <th>Player Name</th>
-        <th>Last Game's Score</th>
-        <th>All Time Score!</th>
+        <th>Player</th>
       </tr>
-      {% for naam in namen %}
+      {% for player_name in player_names %}
         <tr>
-          <td>{{ naam }}</td>
+          <td>{{ player_name.naam }}</td>
         </tr>
       {% endfor %}
     </table>
