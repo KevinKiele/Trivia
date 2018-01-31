@@ -120,6 +120,21 @@ def lobbyselection():
 def singleplayer():
         return render_template("singleplayer.html")
 
+@app.route("/whitehousesolo", methods=["GET", "POST"])
+@login_required
+def whitehousesolo():
+        return render_template("whitehousesolo.html")
+
+@app.route("/fenwayparksolo", methods=["GET", "POST"])
+@login_required
+def fenwayparksolo():
+        return render_template("fenwayparksolo.html")
+
+@app.route("/museumsolo", methods=["GET", "POST"])
+@login_required
+def museumsolo():
+        return render_template("museumsolo.html")
+
 @app.route("/solo1", methods=["GET", "POST"])
 @login_required
 def solo1():
