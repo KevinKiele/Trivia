@@ -78,8 +78,12 @@ def login():
 def logout():
     """Log user out."""
 
+    db.execute("DELETE FROM lobby1 WHERE id = :id", id=session["user_id"])
+    db.execute("DELETE FROM lobby2 WHERE id = :id", id=session["user_id"])
+    db.execute("DELETE FROM lobby3 WHERE id = :id", id=session["user_id"])
     # forget any user_id
     session.clear()
+
 
     # redirect user to prelogin homepage
     return redirect(url_for("preloginhomepage"))
