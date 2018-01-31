@@ -92,19 +92,6 @@ def logout():
 def preloginhomepage():
     return render_template("preloginhomepage.html")
 
-@app.route("/leaderboard", methods={"GET", "POST"})
-def scoreboard():
-    # selecteer alle namen
-    player_names = db.execute("SELECT username FROM users WHERE id = :id", id=session["user_id"])
-    # selecteer naam gebruiker die ingelogd is
-    for player_name in player_names:
-        username = player_name["username"]
-
-    db.execute("INSERT INTO leaderboard (id, username, points) VALUES(:id, :username, :points)", id=session["user_id"], username=username, points="0")
-
-    #player_points = db.execute("SELECT points FROM leaderboard")
-    return render_template("leaderboard.html", player_names=player_names, points="0")
-
 @app.route("/information", methods={"GET", "POST"})
 def information():
 
