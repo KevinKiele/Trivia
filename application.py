@@ -176,10 +176,10 @@ def lobby2():
             # db.execute("DELETE FROM lobby2")
             return render_template("ready.html")
 
-        return render_template("ready.html")
+        return render_template("ready2.html")
 
     else:
-        return redirect(url_for("ready"))
+        return redirect(url_for("ready2"))
 
 @app.route("/lobby3", methods=["GET", "POST"])
 @login_required
@@ -200,10 +200,10 @@ def lobby3():
         if len(max_players) == 2:
             return render_template("ready.html")
 
-        return render_template("ready.html")
+        return render_template("ready3.html")
 
     else:
-        return redirect(url_for("ready"))
+        return redirect(url_for("ready3"))
 
 @app.route("/returnlobby", methods=["GET", "POST"])
 @login_required
@@ -217,15 +217,15 @@ def returnlobby():
         lobby3 = db.execute("SELECT * FROM lobby3 WHERE id = :id", id=session["user_id"])
         if len(lobby1) == 1:
             db.execute("DELETE FROM lobby1 WHERE id = :id", id=session["user_id"])
-            return render_template("lobbyselection.html")
+            return redirect(url_for("lobbyselection"))
 
         elif len(lobby2) == 1:
             db.execute("DELETE FROM lobby2 WHERE id = :id", id=session["user_id"])
-            return render_template("lobbyselection.html")
+            return redirect(url_for("lobbyselection"))
 
         elif len(lobby3) == 1:
             db.execute("DELETE FROM lobby3 WHERE id = :id", id=session["user_id"])
-            return render_template("lobbyselection.html")
+            return redirect(url_for("lobbyselection"))
         # check = db.execute("SELECT * FROM lobby1 WHERE id = :id", id=session["user_id"])
         # not_ready = db.execute("UPDATE lobby1 SET ready = :ready WHERE id = :id", ready="no", id=session["user_id"])
     else:
