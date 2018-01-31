@@ -94,8 +94,17 @@ def preloginhomepage():
 
 @app.route("/leaderboard", methods={"GET", "POST"})
 def leaderboard():
+    # namen
     player_names = db.execute("SELECT username FROM users")
+
+    for player_name in player_names:
+        naam = player_name["username"]
+
+    # scores
     player_scores = db.execute("SELECT points FROM users")
+    points = 0
+
+
     # player_score = db.execute("SELECT score FROM users WHERE id = :id", id=session["user_id"])
 
     # for player_name in player_names:
@@ -103,7 +112,7 @@ def leaderboard():
     #     score = player_name["score"]
 
 
-    return render_template("leaderboard.html", namen=player_names, scores=player_scores)
+    return render_template("leaderboard.html", namen=player_names)
 
 @app.route("/information", methods={"GET", "POST"})
 def information():

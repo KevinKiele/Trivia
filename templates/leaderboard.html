@@ -11,6 +11,11 @@
         <th>Score this game</th>
         <th>Total Score</th>
       </tr>
+      {% for naam in namen %}
+        <tr>
+          <td>{{ naam }}</td>
+        </tr>
+      {% endfor %}
     </table>
 
 {% endblock %}
